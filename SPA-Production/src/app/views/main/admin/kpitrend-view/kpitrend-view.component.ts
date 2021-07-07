@@ -576,7 +576,7 @@ export class KPITrendViewComponent implements OnInit {
         labels: this.labels,
         datasets: [
           {
-            type: 'line',
+            type: 'bar',
             label: "Score for perfomance",
             data: scores,
             yAxisID: 'B',
@@ -587,7 +587,7 @@ export class KPITrendViewComponent implements OnInit {
             pointRadius: 10
           },
           {
-            type: 'bar',
+            type: 'line',
             label: "Perfomance Data",
             backgroundColor: this.pointBackgroundColors,
             borderColor: "#e7263b ",
@@ -598,7 +598,7 @@ export class KPITrendViewComponent implements OnInit {
             pointHitRadius: 15
           },
           {
-            type: 'bar',
+            type: 'line',
             label: "Targets",
             data: this.targets,
             backgroundColor: "#3c8d8a",

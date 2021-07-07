@@ -1808,7 +1808,6 @@ namespace Service.Implementation
 
                 }
 
-
                 if (year == 0)
                     year = currentYear;
 

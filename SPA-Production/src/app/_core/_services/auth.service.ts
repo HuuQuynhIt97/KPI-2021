@@ -43,7 +43,8 @@ export class AuthService {
     if (allowedRoles == null || allowedRoles.length === 0) {
       return true;
     }
-    const token = this.cookieService.get('token');
+    // const token = this.cookieService.get('token');
+    const token = localStorage.getItem('token');
 
     const decodeToken = this.jwtHelper.decodeToken(token);
 
@@ -63,7 +64,7 @@ export class AuthService {
         const user = response ;
         if (user) {
           localStorage.setItem('token', user.token) ;
-          this.cookieService.set('token', user.token ,this.currentDate + 14400000,'/',this.baseCookie, false , 'Strict') ;
+          // this.cookieService.set('token', user.token ,this.currentDate + 14400000,'/',this.baseCookie, false , 'Lax') ;
           localStorage.setItem('user', user.user.User.Alias) ;
           localStorage.setItem('username', user.user.User.Username) ;
           localStorage.setItem('leveloc', user.user.User.LevelOC) ;
