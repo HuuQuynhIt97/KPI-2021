@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>F:\KPI991</_PublishTargetUrl>
+    <History>True|2021-06-29T01:45:55.6839316Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="API.deps.json">
+      <publishTime>02/13/2020 07:51:06</publishTime>
+    </File>
+    <File Include="API.dll">
+      <publishTime>02/13/2020 07:50:58</publishTime>
+    </File>
+    <File Include="API.exe">
+      <publishTime>02/13/2020 07:50:59</publishTime>
+    </File>
+    <File Include="API.pdb">
+      <publishTime>02/13/2020 07:50:58</publishTime>
+    </File>
+    <File Include="API.runtimeconfig.json">
+      <publishTime>02/11/2020 15:02:43</publishTime>
+    </File>
+    <File Include="appsettings.Development.json">
+      <publishTime>01/18/2020 11:58:02</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>02/13/2020 07:49:37</publishTime>
+    </File>
+    <File Include="AutoMapper.dll">
+      <publishTime>08/12/2019 12:42:04</publishTime>
+    </File>
+    <File Include="AutoMapper.Extensions.Microsoft.DependencyInjection.dll">
+      <publishTime>08/12/2019 13:19:42</publishTime>
+    </File>
+    <File Include="Castle.Core.dll">
+      <publishTime>04/05/2019 01:50:28</publishTime>
+    </File>
+    <File Include="cs/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="cs/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="cs/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="de/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="de/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="de/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="dotnet-aspnet-codegenerator-design.dll">
+      <publishTime>09/20/2019 22:26:20</publishTime>
+    </File>
+    <File Include="EPPlus.dll">
+      <publishTime>06/16/2019 10:54:30</publishTime>
+    </File>
+    <File Include="es/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="es/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="es/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="fr/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="fr/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="fr/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="it/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="it/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="it/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="ja/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="ja/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="ja/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="ko/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="ko/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="ko/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="libman.json">
+      <publishTime>01/18/2020 11:58:03</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Authentication.JwtBearer.dll">
+      <publishTime>11/16/2019 11:23:50</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.JsonPatch.dll">
+      <publishTime>09/15/2019 21:00:46</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll">
+      <publishTime>09/15/2019 21:06:06</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Razor.Language.dll">
+      <publishTime>09/14/2019 21:02:58</publishTime>
+    </File>
+    <File Include="Microsoft.Bcl.AsyncInterfaces.dll">
+      <publishTime>11/15/2019 08:38:02</publishTime>
+    </File>
+    <File Include="Microsoft.Bcl.HashCode.dll">
+      <publishTime>11/15/2019 08:38:50</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>08/14/2019 23:21:22</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
+      <publishTime>08/14/2019 23:21:30</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.Razor.dll">
+      <publishTime>09/14/2019 21:03:02</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.Workspaces.dll">
+      <publishTime>08/14/2019 23:20:50</publishTime>
+    </File>
+    <File Include="Microsoft.Data.SqlClient.dll">
+      <publishTime>09/26/2019 20:43:28</publishTime>
+    </File>
+    <File Include="Microsoft.DotNet.PlatformAbstractions.dll">
+      <publishTime>07/20/2017 16:26:22</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
+      <publishTime>01/01/1980 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.dll">
+      <publishTime>01/01/1980 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Proxies.dll">
+      <publishTime>01/01/1980 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Relational.Design.dll">
+      <publishTime>06/21/2018 07:54:22</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
+      <publishTime>01/01/1980 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.SqlServer.Design.dll">
+      <publishTime>06/21/2018 07:54:22</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.SqlServer.dll">
+      <publishTime>01/01/1980 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyModel.dll">
+      <publishTime>07/21/2017 12:08:58</publishTime>
+    </File>
+    <File Include="Microsoft.Identity.Client.dll">
+      <publishTime>04/29/2019 22:04:14</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
+      <publishTime>10/18/2019 23:39:24</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Logging.dll">
+      <publishTime>10/18/2019 23:40:20</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.dll">
+      <publishTime>06/24/2019 19:54:24</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
+      <publishTime>06/24/2019 19:59:32</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>10/18/2019 23:43:40</publishTime>
+    </File>
+    <File Include="Microsoft.OpenApi.dll">
+      <publishTime>10/24/2018 18:48:08</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
+      <publishTime>09/20/2019 22:25:44</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Core.dll">
+      <publishTime>09/20/2019 22:25:48</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.dll">
+      <publishTime>09/20/2019 22:25:52</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll">
+      <publishTime>09/20/2019 22:25:52</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll">
+      <publishTime>09/20/2019 22:25:46</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll">
+      <publishTime>09/20/2019 22:25:46</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll">
+      <publishTime>09/20/2019 22:25:54</publishTime>
+    </File>
+    <File Include="Microsoft.Win32.SystemEvents.dll">
+      <publishTime>06/04/2019 02:03:12</publishTime>
+    </File>
+    <File Include="Models.dll">
+      <publishTime>02/12/2020 11:21:20</publishTime>
+    </File>
+    <File Include="Models.pdb">
+      <publishTime>02/12/2020 11:21:20</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.Bson.dll">
+      <publishTime>11/27/2018 23:10:18</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.dll">
+      <publishTime>11/09/2019 00:56:44</publishTime>
+    </File>
+    <File Include="NLog.config">
+      <publishTime>01/18/2020 11:58:02</publishTime>
+    </File>
+    <File Include="NLog.dll">
+      <publishTime>08/25/2019 19:04:30</publishTime>
+    </File>
+    <File Include="NLog.Extensions.Logging.dll">
+      <publishTime>10/07/2019 21:12:00</publishTime>
+    </File>
+    <File Include="NLog.Web.AspNetCore.dll">
+      <publishTime>10/11/2019 20:32:10</publishTime>
+    </File>
+    <File Include="NuGet.Frameworks.dll">
+      <publishTime>08/05/2019 09:44:14</publishTime>
+    </File>
+    <File Include="pl/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="pl/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="pl/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="pt-BR/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:00</publishTime>
+    </File>
+    <File Include="pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="ru/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="ru/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:02</publishTime>
+    </File>
+    <File Include="ru/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll">
+      <publishTime>05/15/2018 13:29:40</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll">
+      <publishTime>09/26/2019 20:43:26</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll">
+      <publishTime>06/04/2019 02:31:18</publishTime>
+    </File>
+    <File Include="runtimes/win-arm64/native/sni.dll">
+      <publishTime>08/05/2019 09:44:22</publishTime>
+    </File>
+    <File Include="runtimes/win-x64/native/sni.dll">
+      <publishTime>08/05/2019 09:44:22</publishTime>
+    </File>
+    <File Include="runtimes/win-x86/native/sni.dll">
+      <publishTime>08/05/2019 09:44:23</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.dll">
+      <publishTime>05/15/2018 13:29:40</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll">
+      <publishTime>09/26/2019 20:43:26</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll">
+      <publishTime>11/29/2018 15:39:16</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll">
+      <publishTime>06/04/2019 02:21:22</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll">
+      <publishTime>06/04/2019 02:24:40</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="Service.dll">
+      <publishTime>02/12/2020 16:31:07</publishTime>
+    </File>
+    <File Include="Service.pdb">
+      <publishTime>02/12/2020 16:31:07</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.Swagger.dll">
+      <publishTime>09/30/2019 12:27:42</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerGen.dll">
+      <publishTime>09/30/2019 12:27:50</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerUI.dll">
+      <publishTime>09/30/2019 12:27:44</publishTime>
+    </File>
+    <File Include="System.Composition.AttributedModel.dll">
+      <publishTime>08/05/2019 09:44:25</publishTime>
+    </File>
+    <File Include="System.Composition.Convention.dll">
+      <publishTime>08/05/2019 09:44:25</publishTime>
+    </File>
+    <File Include="System.Composition.Hosting.dll">
+      <publishTime>08/05/2019 09:44:25</publishTime>
+    </File>
+    <File Include="System.Composition.Runtime.dll">
+      <publishTime>08/05/2019 09:44:25</publishTime>
+    </File>
+    <File Include="System.Composition.TypedParts.dll">
+      <publishTime>08/05/2019 09:44:25</publishTime>
+    </File>
+    <File Include="System.Configuration.ConfigurationManager.dll">
+      <publishTime>05/15/2018 13:29:38</publishTime>
+    </File>
+    <File Include="System.Drawing.Common.dll">
+      <publishTime>06/04/2019 02:04:38</publishTime>
+    </File>
+    <File Include="System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>10/18/2019 23:38:18</publishTime>
+    </File>
+    <File Include="System.Runtime.Caching.dll">
+      <publishTime>05/15/2018 13:29:40</publishTime>
+    </File>
+    <File Include="System.Security.Cryptography.Pkcs.dll">
+      <publishTime>11/29/2018 15:39:16</publishTime>
+    </File>
+    <File Include="System.Security.Cryptography.ProtectedData.dll">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="tr/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="tr/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:02</publishTime>
+    </File>
+    <File Include="tr/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>02/13/2020 07:51:07</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/browser/signalr.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/browser/signalr.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/browser/signalr.min.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/browser/signalr.min.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/AbortController.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/AbortController.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/browser-index.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/browser-index.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/DefaultHttpClient.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/DefaultHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/DefaultReconnectPolicy.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/DefaultReconnectPolicy.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/EmptyNodeHttpClient.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/EmptyNodeHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Errors.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Errors.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HandshakeProtocol.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HandshakeProtocol.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HttpClient.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HttpClient.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HttpConnection.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HttpConnection.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HubConnection.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HubConnection.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HubConnectionBuilder.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/HubConnectionBuilder.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IConnection.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IConnection.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IHttpConnectionOptions.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IHttpConnectionOptions.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IHubProtocol.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IHubProtocol.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/ILogger.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/ILogger.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/index.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/index.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IRetryPolicy.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/IRetryPolicy.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/ITransport.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/ITransport.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/JsonHubProtocol.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/JsonHubProtocol.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Loggers.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Loggers.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/LongPollingTransport.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/LongPollingTransport.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/NodeHttpClient.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/NodeHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Polyfills.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Polyfills.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/ServerSentEventsTransport.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/ServerSentEventsTransport.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Stream.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Stream.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Subject.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Subject.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/TextMessageFormat.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/TextMessageFormat.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Utils.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/Utils.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/WebSocketTransport.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/WebSocketTransport.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/XhrHttpClient.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/cjs/XhrHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/AbortController.d.ts">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/AbortController.js">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/AbortController.js.map">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/browser-index.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/browser-index.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/browser-index.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/DefaultHttpClient.d.ts">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/DefaultHttpClient.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/DefaultHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/DefaultReconnectPolicy.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/DefaultReconnectPolicy.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/DefaultReconnectPolicy.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/EmptyNodeHttpClient.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/EmptyNodeHttpClient.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/EmptyNodeHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Errors.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Errors.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Errors.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HandshakeProtocol.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HandshakeProtocol.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HandshakeProtocol.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HttpClient.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HttpClient.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HttpClient.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HttpConnection.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HttpConnection.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HttpConnection.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HubConnection.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HubConnection.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HubConnection.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HubConnectionBuilder.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HubConnectionBuilder.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/HubConnectionBuilder.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IConnection.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IConnection.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IConnection.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IHttpConnectionOptions.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IHttpConnectionOptions.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IHttpConnectionOptions.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IHubProtocol.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IHubProtocol.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IHubProtocol.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ILogger.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ILogger.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ILogger.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/index.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/index.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/index.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IRetryPolicy.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IRetryPolicy.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/IRetryPolicy.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ITransport.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ITransport.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ITransport.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/JsonHubProtocol.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/JsonHubProtocol.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/JsonHubProtocol.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Loggers.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Loggers.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Loggers.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/LongPollingTransport.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/LongPollingTransport.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/LongPollingTransport.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/NodeHttpClient.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/NodeHttpClient.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/NodeHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Polyfills.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Polyfills.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Polyfills.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ServerSentEventsTransport.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ServerSentEventsTransport.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/ServerSentEventsTransport.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Stream.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Stream.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Stream.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Subject.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Subject.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Subject.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/TextMessageFormat.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/TextMessageFormat.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/TextMessageFormat.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Utils.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Utils.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/Utils.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/WebSocketTransport.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/WebSocketTransport.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/WebSocketTransport.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/XhrHttpClient.d.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/XhrHttpClient.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/esm/XhrHttpClient.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/webworker/signalr.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/webworker/signalr.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/webworker/signalr.min.js">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/dist/webworker/signalr.min.js.map">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/package.json">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/README.md">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/AbortController.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/browser-index.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/DefaultHttpClient.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/DefaultReconnectPolicy.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/EmptyNodeHttpClient.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/Errors.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/HandshakeProtocol.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/HttpClient.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/HttpConnection.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/HubConnection.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/HubConnectionBuilder.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/IConnection.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/IHttpConnectionOptions.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/IHubProtocol.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/ILogger.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/index.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/IRetryPolicy.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/ITransport.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/JsonHubProtocol.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/Loggers.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/LongPollingTransport.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/NodeHttpClient.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/Polyfills.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/ServerSentEventsTransport.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/Stream.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/Subject.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/TextMessageFormat.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/third-party-notices.txt">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/Utils.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/WebSocketTransport.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/lib/%40microsoft/signalr/src/XhrHttpClient.ts">
+      <publishTime>01/18/2020 11:58:05</publishTime>
+    </File>
+    <File Include="wwwroot/Templates/background.png">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/Templates/belowTarget.html">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/Templates/LateOnTask.html">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/Templates/LateOnUpDateData.html">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/Templates/logo.jpg">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/Templates/upload-data-kpi.xlsx">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="wwwroot/Templates/UploadSuccessfully.html">
+      <publishTime>01/18/2020 11:58:04</publishTime>
+    </File>
+    <File Include="zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="zh-Hans/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:02</publishTime>
+    </File>
+    <File Include="zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+    <File Include="zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <publishTime>08/14/2019 23:21:24</publishTime>
+    </File>
+    <File Include="zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:21:32</publishTime>
+    </File>
+    <File Include="zh-Hant/Microsoft.CodeAnalysis.resources.dll">
+      <publishTime>08/14/2019 23:20:02</publishTime>
+    </File>
+    <File Include="zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <publishTime>08/14/2019 23:20:54</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

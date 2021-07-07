@@ -1,0 +1,94 @@
+
+.vtimeline li {
+    padding: 8px 0px 8px 24px;
+    list-style: none;
+    background: transparent url(../../../../../assets/image/bullet.png) no-repeat -6px 9px;
+}
+.vtimeline {
+    margin-top: 40px;
+}
+.vtimeline .tltitle {
+    border-bottom: 1px solid #ddd;
+    /* margin-bottom: 0px; */
+    padding-left: 12px;
+    width: 301px;
+    padding-bottom: 4px;
+}
+.vtimeline .tltitle i {
+    color: #727139;
+    padding-right: 8px;
+}
+
+.active-td {
+    box-shadow: 0 0 3px #022598 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    background-color: #e7263b !important;
+}
+
+.active-td2 {
+    box-shadow: 0 0 3px #08872f !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    background-color: #08872f !important;
+}
+#tblDataChart tr:nth-child(2) td {
+    cursor: pointer !important;
+    box-shadow: 0 !important;
+    transition: box-shadow .2s !important;
+}
+
+#tblDataChart tr:nth-child(2) td:hover {
+    cursor: pointer !important;
+    box-shadow: 0 0 3px #022598 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    background-color: #022598 !important;
+}
+blockquote {
+    /* background: #fff; */
+    border-left: .7rem solid #007bff;
+    margin: 1.5em .7rem;
+    padding: .5em .7rem;
+    color: black
+}
+blockquote h1, blockquote h2, blockquote h3, blockquote h4, blockquote h5, blockquote h6 {
+    color: #151616;
+    font-size: 1.25rem;
+    font-weight: bold
+}
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 48vh;
+    width: auto;
+}
+ canvas{
+
+     height:500px !important;
+
+ }
+
+.pin-button {
+    margin-left: auto;
+    padding-right: 10px;
+}
+.comment-box-wrapper {
+    z-index: 2;
+    background-color:whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 10px;
+    border-left: 2px solid teal;
+  }
+.pin {
+position: absolute;
+top: 0;
+-webkit-transform: translateY(260%);
+transform: translateY(260%);
+z-index: 2;
+background-color:whitesmoke;
+box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+border-radius: 10px;
+border-left: 2px solid teal;
+cursor: pointer;
+}

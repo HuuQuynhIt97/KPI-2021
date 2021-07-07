@@ -1,0 +1,57 @@
+F:\0.Document\NetCore3.1\KPI\Service\bin\Release\netcoreapp3.1\Service.deps.json
+F:\0.Document\NetCore3.1\KPI\Service\bin\Release\netcoreapp3.1\Service.dll
+F:\0.Document\NetCore3.1\KPI\Service\bin\Release\netcoreapp3.1\Service.pdb
+F:\0.Document\NetCore3.1\KPI\Service\bin\Release\netcoreapp3.1\Models.dll
+F:\0.Document\NetCore3.1\KPI\Service\bin\Release\netcoreapp3.1\Models.pdb
+F:\0.Document\NetCore3.1\KPI\Service\obj\Release\netcoreapp3.1\Service.csprojAssemblyReference.cache
+F:\0.Document\NetCore3.1\KPI\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+F:\0.Document\NetCore3.1\KPI\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfo.cs
+F:\0.Document\NetCore3.1\KPI\Service\obj\Release\netcoreapp3.1\Service.csproj.CopyComplete
+F:\0.Document\NetCore3.1\KPI\Service\obj\Release\netcoreapp3.1\Service.dll
+F:\0.Document\NetCore3.1\KPI\Service\obj\Release\netcoreapp3.1\Service.pdb
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Service.deps.json
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Service.dll
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Service.pdb
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Models.dll
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Models.pdb
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.csprojAssemblyReference.cache
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfo.cs
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.csproj.CopyComplete
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.dll
+F:\0.Document\NetCore3.1\Swagger\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.pdb
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Service.deps.json
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Service.dll
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Service.pdb
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Models.dll
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\bin\Release\netcoreapp3.1\Models.pdb
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.csprojAssemblyReference.cache
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfo.cs
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.csproj.CopyComplete
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.dll
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1\Service\obj\Release\netcoreapp3.1\Service.pdb
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\bin\Release\netcoreapp3.1\Service.deps.json
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\bin\Release\netcoreapp3.1\Service.dll
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\bin\Release\netcoreapp3.1\Service.pdb
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\bin\Release\netcoreapp3.1\Models.dll
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\bin\Release\netcoreapp3.1\Models.pdb
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\obj\Release\netcoreapp3.1\Service.csprojAssemblyReference.cache
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfo.cs
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\obj\Release\netcoreapp3.1\Service.csproj.CopyComplete
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\obj\Release\netcoreapp3.1\Service.dll
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\obj\Release\netcoreapp3.1\Service.pdb
+F:\0.To do list\KPI\18012020\KPI-API-NetCore3.1 - Copy\Service\obj\Release\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache
+F:\Angular\SYSTEM\KPI\API_Core\Service\bin\Release\netcoreapp3.1\Service.deps.json
+F:\Angular\SYSTEM\KPI\API_Core\Service\bin\Release\netcoreapp3.1\Service.dll
+F:\Angular\SYSTEM\KPI\API_Core\Service\bin\Release\netcoreapp3.1\Service.pdb
+F:\Angular\SYSTEM\KPI\API_Core\Service\bin\Release\netcoreapp3.1\Models.dll
+F:\Angular\SYSTEM\KPI\API_Core\Service\bin\Release\netcoreapp3.1\Models.pdb
+F:\Angular\SYSTEM\KPI\API_Core\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+F:\Angular\SYSTEM\KPI\API_Core\Service\obj\Release\netcoreapp3.1\Service.AssemblyInfo.cs
+F:\Angular\SYSTEM\KPI\API_Core\Service\obj\Release\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache
+F:\Angular\SYSTEM\KPI\API_Core\Service\obj\Release\netcoreapp3.1\Service.csproj.CopyComplete
+F:\Angular\SYSTEM\KPI\API_Core\Service\obj\Release\netcoreapp3.1\Service.dll
+F:\Angular\SYSTEM\KPI\API_Core\Service\obj\Release\netcoreapp3.1\Service.pdb
+F:\Angular\SYSTEM\KPI\API_Core\Service\obj\Release\netcoreapp3.1\Service.csproj.AssemblyReference.cache

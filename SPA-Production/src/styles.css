@@ -1,0 +1,25 @@
+/* body {
+    color: black;
+    font-weight: 400;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+@import '../node_modules/@syncfusion/ej2-base/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-grids/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-treegrid/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/bootstrap.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/bootstrap.css';
+@import "../node_modules/@syncfusion/ej2-angular-inplace-editor/styles/bootstrap.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@ng-select/ng-select/themes/material.theme.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

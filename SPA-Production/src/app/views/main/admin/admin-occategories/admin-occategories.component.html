@@ -1,0 +1,90 @@
+<!-- <section class="content">
+  <div class="container-fluid">
+  </div>
+</section> -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="callout bg-yellow-gradient" style="border-color:#c57901; background-color: #1b945c; color: white;">
+      <h3>5. OC Category</h3>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Organization Chart</h5>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body table-responsive p-0">
+        <ejs-treegrid
+        #treegrid
+        [dataSource]="data"
+        childMapping="children"
+        [treeColumnIndex]="1"
+        [allowPaging]="true"
+        [pageSettings]="pageSettings"
+        [allowExcelExport]="true"
+        [allowPdfExport]="true"
+        [allowSorting]="true"
+        [editSettings]="editing"
+        (rowSelected)="rowSelected($event)"
+        [searchSettings]="searchSettings"
+        [toolbar]="toolbar" >
+          <e-columns>
+            <e-column field="levelnumber" width="100" isPrimaryKey="true" headerText="Level" [disableHtmlEncode]="false"></e-column>
+            <e-column field="title" editType="stringedit" headerText="OC Name" [edit]="editparams" [disableHtmlEncode]="false"></e-column>
+          </e-columns>
+        </ejs-treegrid>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Category lists {{title}}</h5>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="isHide" class="card-body table-responsive p-0">
+        <ejs-grid  #grid [searchSettings]="searchSettings" [allowResizing]='true' gridLines="Both" [toolbar]='toolbarOptions' [dataSource]='data2' allowPaging='true' [pageSettings]='pageSettings2' >
+          <e-columns>
+            <e-column field='ID' headerText='#' width='80' textAlign='Center' isPrimaryKey='true'>
+              <ng-template #template let-data>
+                <span>{{No(data.index)}}</span>
+              </ng-template>
+
+            </e-column>
+            <e-column width='80'>
+              <ng-template #template let-data>
+                <ejs-switch onLabel="YES" offLabel="NO" (click)="addOCCategory(data)" cssClass="e-success"  #wswitch [(checked)]="data.Status" ></ejs-switch>
+              </ng-template>
+            </e-column>
+            <e-column field='Name' headerText='Category Name' width='150' textAlign='Left' >
+            </e-column>
+            <e-column field='Code' headerText='Category Code' width='150' textAlign='Left' ></e-column>
+            <e-column field='KPI_Kind_Name' headerText='KPI Kind' width='150' textAlign='Left' ></e-column>
+            <e-column field='LevelID' headerText='Level Number' width='120' textAlign='Center' ></e-column>
+            <e-column field='' headerText='Modified By' width='120' textAlign='Center' >
+              <ng-template #template let-data>
+                <ng-container *ngIf="data.Status; else elseTemplate">
+                  <span class="badge badge-pill badge-dark"> {{ data.modifyBy || "#N/A"}}</span>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <span class="badge badge-pill badge-dark"> {{ "#N/A"}}</span>
+                </ng-template>
+              </ng-template>
+            </e-column>
+          </e-columns>
+        </ejs-grid>
+      </div>
+    </div>
+  </div>
+</div>

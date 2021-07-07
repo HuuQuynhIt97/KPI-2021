@@ -1,0 +1,73 @@
+<!-- <section class="content">
+  <div class="container-fluid">
+
+  </div>
+</section> -->
+<ng-container *ngIf="role == 1; else elseTemplate">
+  <div class="row">
+    <div *ngFor="let item of menuAdmin; let i=index" class="col-12 col-sm-6 col-md-3">
+      <a [routerLink]="item.Link" routerLinkActive="router-link-active" style="text-decoration:none">
+        <div class="info-box demo">
+          <span [class]="'info-box-icon' + ' ' + item.BackgroudColor+ ' ' + 'elevation-1'"><i
+              [class]="item.FontAwesome"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">{{item.Name}}</span>
+            <span class="info-box-number " style="color:#fff">
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div *ngIf="User" class="row">
+    <div *ngFor="let item of menuUser; let i=index" class="col-12 col-sm-6 col-md-3">
+      <a [routerLink]="item.Link" routerLinkActive="router-link-active" style="text-decoration:none">
+        <div class="info-box demo">
+          <span [class]="'info-box-icon' + ' ' + item.BackgroudColor+ ' ' + 'elevation-1'"><i
+              [class]="item.FontAwesome"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">{{item.Name}}</span>
+            <span class="info-box-number " style="color:#fff">
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div *ngIf="moderator" class="row">
+    <div *ngFor="let item of menuAdmin; let i=index" class="col-12 col-sm-6 col-md-3">
+      <a [routerLink]="item.Link" routerLinkActive="router-link-active" style="text-decoration:none">
+        <div class="info-box demo">
+          <span [class]="'info-box-icon' + ' ' + item.BackgroudColor+ ' ' + 'elevation-1'">
+            <i [class]="item.FontAwesome"></i>
+          </span>
+
+          <div class="info-box-content">
+            <span class="info-box-number " style="color: rgb(255, 255, 255);"></span>
+            <span class="info-box-text">{{item.Name}}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+      <a [routerLink]="['/setting']" routerLinkActive="router-link-active" style="text-decoration:none">
+        <div class="info-box demo">
+          <span class="bg-green elevation-1 info-box-icon">
+            <i class="fas fa-cogs"></i>
+          </span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Setting</span>
+            <span class="info-box-number " style="color:#fff">
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</ng-template>

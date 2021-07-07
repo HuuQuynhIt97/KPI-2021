@@ -1,0 +1,24 @@
+<!-- <section class="content">
+    <div class="container-fluid">
+    </div>
+  </section> -->
+<div class="row">
+
+    <div *ngFor="let item of menuAdmin; let i=index" class="col-12 col-sm-6 col-md-3">
+        <a [routerLink]="item.Link" routerLinkActive="router-link-active"  style="text-decoration:none">
+        <div class="info-box demo">
+            <span [class]="'info-box-icon' + ' ' + item.BackgroudColor+ ' ' + 'elevation-1'">
+                <i [class]="item.FontAwesome"></i>
+            </span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">{{item.Name}}</span>
+                <span class="info-box-number " style="color:#fff">
+                </span>
+            </div>
+        </div>
+        </a>
+    </div>
+
+
+</div>

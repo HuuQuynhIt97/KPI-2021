@@ -1,0 +1,148 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <h6 style="color:transparent">asd</h6>
+  </div>
+  <div class="col-md-12">
+    <div class="box box-widget">
+      <div class="box-header with-border">
+        <h5 *ngIf="period == 'W'" class="box-title1" style="font-weight:bold">KPI Chart - {{name}} - Weekly</h5>
+        <h5 *ngIf="period == 'M'" class="box-title1" id="box-title1" style="font-weight:bold">KPI Chart - {{name}} - Monthly</h5>
+        <h5 *ngIf="period == 'Q'" class="box-title1" style="font-weight:bold">KPI Chart - {{name}} - Quarterly</h5>
+        <h5 *ngIf="period == 'H'" class="box-title1" style="font-weight:bold">KPI Chart - {{name}} - Half Year</h5>
+        <h5 *ngIf="period == 'Y'" class="box-title1" style="font-weight:bold">KPI Chart - {{name}} - Yearly</h5>
+      </div>
+      <div class="box-body">
+
+        <h6 style="color:transparent">asd</h6>
+
+        <div class="col-md-12">
+          <!-- @* Year *@ -->
+          <div class="form-inline"  id="searchYear">
+            <label class="my-1 mr-2" for="YearOfYear">Year</label>
+            <select [(ngModel)]="year"  (change)="vyear($event)" class="custom-select form-control my-1 mr-sm-2 YearOfYear" id="YearOfYear">
+              <option value="0" selected>Choose...</option>
+
+              <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+            </select>
+            <button style="margin: 3px" type="button" class="btn btn-sm bg-navy margin">
+              Manager:
+              <strong>{{OwnerManagerment}}</strong>
+            </button>
+            <button style="margin: 3px" type="button" class="btn btn-sm bg-navy margin">
+              Owner:
+              <strong>{{Owner}}</strong>
+            </button>
+            <button style="margin: 3px" type="button" class="btn btn-sm bg-navy margin">
+              Updater:
+              <strong>{{PIC}}</strong>
+            </button>
+            <button style="margin: 3px" type="button" class="btn btn-sm bg-navy margin">
+              Sponsor:
+              <strong>{{Sponsor}}</strong>
+            </button>
+            <button style="margin: 3px" type="button" class="btn btn-sm bg-navy margin">
+              Participant:
+              <strong>{{Participant}}</strong>
+            </button>
+
+            <button (click)="onExporting($event)" style="margin: 3px" type="button" class="btn btn-sm bg-success margin">
+              <i class="far fa-file-excel"></i> Export Excel
+            </button>
+
+            <button (click)="ResetChart()" style="margin: 3px" type="button" class="btn btn-sm bg-primary margin">
+              <i class="fas fa-sync-alt"></i> Reset Chart
+            </button>
+
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="planet-charttrend"></canvas>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-12">
+    <h6>Action Plan List:</h6>
+    <div  >
+      <dx-data-grid id="priceDataGrid" (onExporting)="onExporting($event)" [rowAlternationEnabled]="true" [dataSource]="AllDataActionPlanByKPILevelID" #priceDataGrid [showBorders]="true" [showRowLines]="true"  [showColumnLines]="true" [allowColumnResizing]="true" [columnAutoWidth]="true" [columnResizingMode]="columnResizingMode"  >
+
+        <dxo-filter-row [visible]="showFilterRow"></dxo-filter-row>
+
+        <dxo-header-filter [visible]="showHeaderFilter" ></dxo-header-filter>
+
+        <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..." ></dxo-search-panel>
+
+        <dxi-column dataField="RootCause" headerCellTemplate="headerTemplate"></dxi-column>
+
+        <dxi-column dataField="Index" caption="No." headerCellTemplate="IndexTemplate"></dxi-column>
+
+        <dxi-column dataField="CreatedTimed" caption="Create Month" headerCellTemplate="CreatedTimedTemplate"></dxi-column>
+
+        <dxi-column dataField="Title" caption="Action plan" headerCellTemplate="TitleTemplate"></dxi-column>
+
+        <dxi-column dataField="Description" caption="Description" headerCellTemplate="DescriptionTemplate"></dxi-column>
+
+        <dxi-column dataField="Tag" caption="PIC" headerCellTemplate="TagTemplate"></dxi-column>
+
+        <dxi-column dataField="Deadline" dataType="date" caption="Due Date" headerCellTemplate="DeadlineTemplate" ></dxi-column>
+
+        <dxi-column dataField="UpdateSheduleDate" caption="Update Schedule Date" headerCellTemplate="UpdateSheduleDateTemplate" ></dxi-column>
+
+        <dxi-column dataField="ActualFinishDate" headerCellTemplate="ActualFinishDateTemplate" ></dxi-column>
+
+        <dxi-column dataField="Remark" headerCellTemplate="RemarkTemplate"></dxi-column>
+
+        <dxi-column dataField="ApprovedStatus2" caption="Approved" headerCellTemplate="ApprovedStatusTemplate"></dxi-column>
+
+        <div *dxTemplate="let data of 'headerTemplate'">
+          <span> <b style="color:black;"> Root Cause </b></span>
+        </div>
+        <div *dxTemplate="let data of 'IndexTemplate'">
+          <span> <b style="color:black;"> No. </b></span>
+        </div>
+        <div *dxTemplate="let data of 'CreatedTimedTemplate'">
+          <span> <b style="color:black;"> Create Month </b></span>
+        </div>
+        <div *dxTemplate="let data of 'TitleTemplate'">
+          <span> <b style="color:black;"> Action plan </b></span>
+        </div>
+        <div *dxTemplate="let data of 'DescriptionTemplate'">
+          <span> <b style="color:black;"> Description </b></span>
+        </div>
+        <div *dxTemplate="let data of 'TagTemplate'">
+          <span> <b style="color:black;"> PIC </b></span>
+        </div>
+        <div *dxTemplate="let data of 'DeadlineTemplate'">
+          <span> <b style="color:black;"> Due Date </b></span>
+        </div>
+        <div *dxTemplate="let data of 'UpdateSheduleDateTemplate'">
+          <span> <b style="color:black;"> Update Schedule Date </b></span>
+        </div>
+        <div *dxTemplate="let data of 'ActualFinishDateTemplate'">
+          <span> <b style="color:black;"> Actual Finish Date </b></span>
+        </div>
+        <div *dxTemplate="let data of 'RemarkTemplate'">
+          <span> <b style="color:black;"> Remark </b></span>
+        </div>
+        <div *dxTemplate="let data of 'ApprovedStatusTemplate'">
+          <span> <b style="color:black;"> Approved </b></span>
+        </div>
+      </dx-data-grid>
+    </div>
+
+    <div style="visibility: hidden;">
+      <dx-data-grid id="ratingDataGrid" [showBorders]="true" [rowAlternationEnabled]="true" height="10px" [dataSource]="AllDataActionPlanByKPILevelID2" #ratingDataGrid >
+        <dxi-column dataField="Picture" cellTemplate="cellTemplate1"></dxi-column>
+        <div *dxTemplate="let data of 'cellTemplate1'">
+          <img [src]="urlimage"/>
+        </div>
+        <dxo-export [enabled]="true"></dxo-export>
+      </dx-data-grid>
+    </div>
+  </div>
+
+</div>

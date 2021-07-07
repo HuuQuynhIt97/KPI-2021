@@ -1,0 +1,27 @@
+<section id="chartperiod" class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- LINE CHART -->
+      <div class="box box-widget">
+        <div class="box-header with-border">
+          <h3 class="box-title" style="font-weight:bold" >KPI Compare Chart - {{kpiname}} - {{period}}</h3>
+        </div>
+        <div class="box-body">
+          <button type="button" class="btn margin pull-right" style="background-color:#09a99f;color:#fff">
+            <i class="fa fa-star"></i>
+            <span>Target : </span>
+            <span class="standard text-bold" style>standard</span>
+          </button>
+          <button type="button" class="btn margin pull-right" style="background-color:#09a99f;color:#fff">
+            <i class="fa fa-star"></i>
+            <span>Target : </span>
+            <span class="standard text-bold" style>chartVM2s.targets</span>
+          </button>
+          <div class="chart">
+            <canvas id="planet-chartcompare" style="height:500px"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

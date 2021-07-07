@@ -1,0 +1,59 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>
+<div class="app-body">
+  <div class="app-login">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="login-title">
+              <!-- <img src="../../../assets/img/logo/LogoSYF.png" alt="" width="70">  -->
+              <span style="font-size: 50px; font-weight: bold;">KPI System</span>
+            </div>
+            <div class="card-group">
+              <div class="card p-4">
+                <div class="card-body">
+                  <form (ngSubmit)="login()" #form="ngForm">
+                    <p class="text-muted text-center">Sign in to start your session</p>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-user"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Username" [(ngModel)]="user.username" name="username"
+                      autocomplete="username" required>
+                    </div>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-lock"></i></span>
+                      </div>
+                      <input [type]="type" class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password"
+                      autocomplete="current-password" required>
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span style="cursor:pointer" >
+                            <i [ngClass]="fonticon" (click)="showPassword()" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <p class="message">Forgot Password? <a [routerLink]="['/ForgotPassword']" routerLinkActive="router-link-active" >Recovery now</a></p>
+                      </div>
+                      <div class="col-6 text-right">
+                        <button type="submit" class="btn btn-primary px-4" [disabled]="!form.valid">Sign in</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>

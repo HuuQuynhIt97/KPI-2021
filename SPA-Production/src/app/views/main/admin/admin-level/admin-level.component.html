@@ -1,0 +1,117 @@
+<!-- <section class="content">
+  <div class="container-fluid">
+  </div>
+</section> -->
+<div class="row">
+  <div class="col-md-12">
+      <div class="callout bg-yellow-gradient" style="border-color:#c57901; background-color: #1b945c; color: white;">
+      <h3>1. {{'OC' | translate}}</h3>
+      </div>
+  </div>
+  <!-- <div class="col-md-12 pb-4">
+    <button *ngIf="role === 1" type="button" class="btn bg-gradient-secondary btn-sm" (click)="openAddOC(addOC)">
+      <i class="fas fa-plus"></i> Add OC
+    </button>
+  </div> -->
+  <div class="col-md-12">
+    <div class="card">
+
+      <div class="card-header" >
+        <div class="row">
+          <div class="col-md-4">
+            <h3 class="card-title">List OC</h3>
+          </div>
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <button *ngIf="role === 1" type="button" class="btn btn-success float-right" (click)="openAddOC(addOC)">
+              <i class="fa fa-plus"></i> Add OC
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-body table-responsive p-0">
+        <ejs-treegrid
+          #treegrid
+          [dataSource]="data"
+          childMapping="children"
+          [treeColumnIndex]="1"
+          [allowPaging]="true"
+          [pageSettings]="pageSettings"
+          [allowExcelExport]="true"
+          [allowPdfExport]="true"
+          [allowSorting]="true"
+          [contextMenuItems]="contextMenuItems"
+          (contextMenuClick)="contextMenuClick($event,addSubOC)"
+          [editSettings]="editing"
+          (rowSelected)="rowSelected($event)"
+          (actionComplete)="actionComplete($event)"
+          [searchSettings]="searchSettings"
+          [toolbar]="toolbar"
+        >
+          <e-columns>
+            <e-column field="levelnumber" width="100" isPrimaryKey="true" headerText="Level" [disableHtmlEncode]="false">
+            </e-column>
+            <e-column field="title" editType="stringedit" headerText="Project Name" [edit]="editparams"[disableHtmlEncode]="false"></e-column>
+            <e-column field="code" editType="stringedit" headerText="Code" [edit]="editparams" [disableHtmlEncode]="false"></e-column>
+          </e-columns>
+        </ejs-treegrid>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #addOC let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> {{modalTitle}}
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">Name</label>
+            <input [(ngModel)]="oc.Name" name="name" type="text"  class="form-control Name" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="save()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+
+  <ng-template #addSubOC let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> {{modalTitle}}
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">Name</label>
+            <input [(ngModel)]="oc.Name" name="name" type="text"  class="form-control Name" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="save()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+
+</div>

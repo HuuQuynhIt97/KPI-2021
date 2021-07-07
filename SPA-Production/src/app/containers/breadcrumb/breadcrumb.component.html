@@ -1,0 +1,27 @@
+
+<!-- <div class="col-md-12 mt-2">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/home']" routerLinkActive="router-link-active">{{'home' | translate}}</a>
+    </li>
+    <li class="breadcrumb-item active">{{name}}</li>
+  </ol>
+</div> -->
+
+<div class="col-md-12 mt-2">
+  <div class="content-header">
+    <ol class="breadcrumb breadcrumb-arrow">
+      <li  *ngFor="let breadcrumb of breadcrumbs; let i=index"><a [routerLink]="[breadcrumb.url]" >{{ breadcrumb.label  }}</a></li>
+    </ol>
+  </div>
+</div>
+<!-- <breadcrumb #parent>
+  <ol class="breadcrumb">
+    <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
+      <li *ngIf="!route.terminal" class="breadcrumb-item">
+        <a href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+      </li>
+      <li *ngIf="route.terminal" class="breadcrumb-item active" aria-current="page">{{ route.displayName }}</li>
+    </ng-template>
+  </ol>
+</breadcrumb> -->

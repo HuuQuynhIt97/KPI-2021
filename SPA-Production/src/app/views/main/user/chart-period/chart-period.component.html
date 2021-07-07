@@ -1,0 +1,1132 @@
+<!-- <section class="content">
+</section>
+<div class="container-fluid" >
+</div> -->
+<div (resized)="onResized($event)" class="row">
+  <div class="col-md-12">
+  </div>
+  <div class="col-md-12">
+    <div class="box box-widget">
+      <div class="box-body">
+
+        <div class="row" *ngIf="period == 'W'" >
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startMonth">{{'Year' | translate}}</label>
+                  <select [(ngModel)]="year"  (change)='vyear($event)'  class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startWeek">{{'WeekStart' | translate}}</label>
+                  <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control year my-1 mr-sm-2" id="startWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(53); let i=index"  [value]="i+1">Week {{i+1}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="endWeek">{{'WeekEnd' | translate}}</label>
+                  <select [(ngModel)]="end" (change)='vend($event)' class="custom-select form-control year my-1 mr-sm-2" id="endWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(53); let i=index"  [value]="i+1">Week {{i+1}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">asd</label>
+                  <button type="button" (click)="clearSearch(period)" class="btn bg-teal my-1 mr-sm-2 form-control margin"><i class="fa fa-minus-circle"></i>{{'btnClearSearch'|translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">Compare</label>
+                  <button type="button" (click)="compare(compareModal)"   class="btn btn-danger my-1 mr-sm-2 form-control margin"><i class="fa fa-adjust"></i>Compare</button>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <ng-container *ngIf="statusfavorite == false; else elseTemplate">
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Add Favourite</label>
+                    <button  type="button" class="btn bg-navy my-1 mr-sm-2 form-control margin" (click)="addFv()" id="btnLike" >
+                      <i class="fa fa-heart"></i> Add Favourite
+                    </button>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Added Favourite</label>
+                    <button  type="button" class="btn btn-default my-1 mr-sm-2 form-control margin disabled" disabled id="btnLike">
+                      <i class="fa fa-heart"></i> Added Favourite
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row" *ngIf="period == 'M'" >
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startMonth">{{'Year'| translate}}</label>
+                  <select [(ngModel)]="year"  (change)='vyear($event)'  class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startWeek">{{'Start' | translate}}</label>
+                  <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control year my-1 mr-sm-2" id="startWeek">
+                    <option value="0" >Choose...</option>
+                    <option value="1" >Jan</option>
+                    <option value="2">Feb</option>
+                    <option value="3">Mar</option>
+                    <option value="4">Apr</option>
+                    <option value="5">May</option>
+                    <option value="6">Jun</option>
+                    <option value="7">Jul</option>
+                    <option value="8">Aug</option>
+                    <option value="9">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="endWeek">{{'End' | translate}}</label>
+                  <select [(ngModel)]="end" (change)='vend($event)' class="custom-select form-control year my-1 mr-sm-2" id="endWeek">
+                      <option value="0" >Choose...</option>
+                      <option value="1" >Jan</option>
+                      <option value="2">Feb</option>
+                      <option value="3">Mar</option>
+                      <option value="4">Apr</option>
+                      <option value="5">May</option>
+                      <option value="6">Jun</option>
+                      <option value="7">Jul</option>
+                      <option value="8">Aug</option>
+                      <option value="9">Sep</option>
+                      <option value="10">Oct</option>
+                      <option value="11">Nov</option>
+                      <option value="12">Dec</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">asd</label>
+                  <button type="button" (click)="clearSearch(period)" class="btn bg-teal my-1 mr-sm-2 form-control margin"><i class="fa fa-minus-circle"></i>{{'btnClearSearch' | translate}}</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">Compare</label>
+                  <button type="button" (click)="compare(compareModal)"   class="btn btn-danger my-1 mr-sm-2 form-control margin"><i class="fa fa-adjust"></i>Compare</button>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <ng-container *ngIf="statusfavorite == false; else elseTemplate">
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Add Favourite</label>
+                    <button  type="button" class="btn bg-navy my-1 mr-sm-2 form-control margin" (click)="addFv()" id="btnLike" >
+                      <i class="fa fa-heart"></i> Add Favourite
+                    </button>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Added Favourite</label>
+                    <button  type="button" class="btn btn-default my-1 mr-sm-2 form-control margin disabled" disabled id="btnLike">
+                      <i class="fa fa-heart"></i> Added Favourite
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="period == 'H'" >
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startMonth">{{'Year' | translate}}</label>
+                  <select [(ngModel)]="year"  (change)='vyear($event)'  class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startWeek">{{'Start' |translate}}</label>
+                  <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control year my-1 mr-sm-2" id="startWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option value="1">Jun</option>
+                    <option value="2">Dec</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="endWeek">{{'End' | translate}}</label>
+                  <select [(ngModel)]="end" (change)='vend($event)' class="custom-select form-control year my-1 mr-sm-2" id="endWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option value="1">Jun</option>
+                    <option value="2">Dec</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">asd</label>
+                  <button type="button" (click)="clearSearch(period)" class="btn bg-teal my-1 mr-sm-2 form-control margin"><i class="fa fa-minus-circle"></i>ClearSearch</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">Compare</label>
+                  <button type="button" (click)="compare(compareModal)"   class="btn btn-danger my-1 mr-sm-2 form-control margin"><i class="fa fa-adjust"></i>Compare</button>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <ng-container *ngIf="statusfavorite == false; else elseTemplate">
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Add Favourite</label>
+                    <button  type="button" class="btn bg-navy my-1 mr-sm-2 form-control margin" (click)="addFv()" id="btnLike" >
+                      <i class="fa fa-heart"></i> Add Favourite
+                    </button>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Added Favourite</label>
+                    <button  type="button" class="btn btn-default my-1 mr-sm-2 form-control margin disabled" disabled id="btnLike">
+                      <i class="fa fa-heart"></i> Added Favourite
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="period == 'Q'" >
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startMonth">{{'Year' | translate}}</label>
+                  <select [(ngModel)]="year"  (change)='vyear($event)'  class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startWeek">{{'Start'|translate}}</label>
+                  <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control year my-1 mr-sm-2" id="startWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(4); let i=index"  [value]="i+1">Quater {{i+1}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="endWeek">{{'End'| translate}}</label>
+                  <select [(ngModel)]="end" (change)='vend($event)' class="custom-select form-control year my-1 mr-sm-2" id="endWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(4); let i=index"  [value]="i+1">Quater {{i+1}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">asd</label>
+                  <button type="button" (click)="clearSearch(period)" class="btn bg-teal my-1 mr-sm-2 form-control margin"><i class="fa fa-minus-circle"></i>{{'btnClearSearch' | translate}}</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">Compare</label>
+                  <button type="button" (click)="compare(compareModal)"   class="btn btn-danger my-1 mr-sm-2 form-control margin"><i class="fa fa-adjust"></i>Compare</button>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <ng-container *ngIf="statusfavorite == false; else elseTemplate">
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Add Favourite</label>
+                    <button  type="button" class="btn bg-navy my-1 mr-sm-2 form-control margin" (click)="addFv()" id="btnLike" >
+                      <i class="fa fa-heart"></i> Add Favourite
+                    </button>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Added Favourite</label>
+                    <button  type="button" class="btn btn-default my-1 mr-sm-2 form-control margin disabled" disabled id="btnLike">
+                      <i class="fa fa-heart"></i> Added Favourite
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="period == 'Y'" >
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startMonth">{{'Year' | translate}}</label>
+                  <select [(ngModel)]="year"  (change)='vyear($event)'  class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="startWeek">{{'Start' | translate}}</label>
+                  <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control year my-1 mr-sm-2" id="startWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" for="endWeek">{{'End' | translate}}</label>
+                  <select [(ngModel)]="end" (change)='vend($event)' class="custom-select form-control year my-1 mr-sm-2" id="endWeek">
+                    <option value="0" selected>Choose...</option>
+                    <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">asd</label>
+                  <button type="button" (click)="clearSearch(period)" class="btn bg-teal my-1 mr-sm-2 form-control margin"><i class="fa fa-minus-circle"></i>{{'btnClearSearch' | translate}}</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label class="my-1 mr-2" style="color:transparent" for="endMonth">Compare</label>
+                  <button type="button" (click)="compare(compareModal)"   class="btn btn-danger my-1 mr-sm-2 form-control margin"><i class="fa fa-adjust"></i>Compare</button>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <ng-container *ngIf="statusfavorite == false; else elseTemplate">
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Add Favourite</label>
+                    <button  type="button" class="btn bg-navy my-1 mr-sm-2 form-control margin" (click)="addFv()" id="btnLike" >
+                      <i class="fa fa-heart"></i> Add Favourite
+                    </button>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <label class="my-1 mr-2" style="color:transparent" for="endMonth">Added Favourite</label>
+                    <button  type="button" class="btn btn-default my-1 mr-sm-2 form-control margin disabled" disabled id="btnLike">
+                      <i class="fa fa-heart"></i> Added Favourite
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-inline">
+              <label style="margin: 3px" class="my-1 mr-2" for="startMonth">Step</label>
+              <input style="margin: 3px" type="number" class="form-control"  [(ngModel)]="stepSize" (change)="stepChart()" id="stepChart" style="width:70px"/>
+              <label style="margin: 3px" class="my-1 mr-2" for="endMonth">Min</label>
+              <input style="margin: 3px" type="number" class="form-control"  [(ngModel)]="min" (change)="minChart()" id="minChart"  style="width:70px"/>
+
+              <button style="margin: 5px" type="button" (click)="hiddenData()" *ngIf="isHide" class="btn btn-sm bg-navy margin btnHiddenData">Hide Data</button>
+              <button style="margin: 5px" type="button" (click)="showData()" *ngIf="isShow"  class="btn btn-sm bg-success margin btnShowData">Show Data</button>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <button type="button" style="margin: 3px" class="btn btn-sm bg-navy margin">
+              {{'Manager_label' | translate}}:
+              <strong>{{OwnerManagerment}}</strong>
+            </button>
+            <button type="button" style="margin: 3px" class="btn btn-sm bg-navy margin">
+              {{'Owner_label' | translate}}:
+              <strong>{{Owner}}</strong>
+            </button>
+            <button type="button" style="margin: 3px" class="btn btn-sm bg-navy margin">
+              {{'Updater_label' | translate}}:
+              <strong>{{PIC}}</strong>
+            </button>
+            <button type="button" style="margin: 3px" class="btn btn-sm bg-navy margin">
+              {{'Sponsor_label' | translate}}:
+              <strong>{{Sponsor}}</strong>
+            </button>
+            <button type="button" style="margin: 3px" class="btn btn-sm bg-navy margin">
+              {{'Participant_label' | translate}}:
+              <strong>{{Participant}}</strong>
+            </button>
+          </div>
+        </div>
+
+        <div class="chart">
+          <canvas  id="planet-chart" ></canvas>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="box box-widget">
+      <div class="box-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" style="margin-bottom:20px;" id="tblDataChart">
+            <tbody>
+              <tr>
+                <th *ngIf="period == 'W'" class="text-center" width="5%">Week</th>
+                <th *ngIf="period == 'M'" class="text-center" width="5%">Month</th>
+                <th *ngIf="period == 'Q'" class="text-center" width="5%">Quater</th>
+                <th *ngIf="period == 'H'" class="text-center" width="10%">Half Year</th>
+                <th *ngIf="period == 'Y'" class="text-center" width="5%">Year</th>
+                <th *ngFor="let item of labels; let i=index" class="text-center">{{item}}</th>
+              </tr>
+              <tr>
+                <th class="text-center" width="5%">Target</th>
+                <td *ngFor="let item of dataremarks; let i=index" (click)="openComment($event,item,comment)" [ngClass]="checktarget(item.Status,item.Value,item.Target)" >{{item.Value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modalComment -->
+  <ng-template #comment let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+        <h4 class="modal-title">
+          <i class="fa fa-tags"></i>&#32;
+          <span class="RemarkChart"> {{remarkText}}</span>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalclose()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <div class="row bootstrap snippets">
+        <div class="col-md-12 col-sm-12">
+          <div class="comment-wrapper">
+            <div class="panel panel-info">
+              <div class="panel-body">
+
+
+                  <div *ngIf="pins" class="comment-box-wrapper " id='pin' >
+                    <ejs-tooltip id='tooltip_2' content='Please click on this icon to unpin!!!'>
+                      <ul class="media-list">
+
+                        <li *ngFor="let item of pins; let i=index" class="media">
+                          <a class="float-left">
+                            <img src="../../../assets/image/user-icon.png" alt="" class="img-circle">
+                          </a>
+                          <div class="media-body">
+                            <span *ngIf="userid == item.UserID" class="text-muted2 float-right "  style="padding-left: 13px; cursor: pointer" >
+                              <p (click)="unpin(item.CommentID)" > <i style="font-size: 20px" class="fa fa-thumb-tack"></i> </p>
+                            </span>
+                            <strong class="text-success">{{item.FullName}}</strong>
+                            <span class="text-muted float-right">
+                              <small class="text-muted">{{item.CommentedDate | date:'HH:mm a - dd/MM/yyy'}}</small>
+                            </span>
+                            <span *ngIf="item.Read" class="badge bg-green"> new</span>
+                            <ng-container *ngIf="item.Task; else elseTemplate">
+                              <p ><a (click)="openActionPlan(item,actionplan)"  data-toggle="modal"  data-dismiss="modal"  class="btn btn-sm btn-danger text-bold btnTask"><i class="fa fa-tags"></i> Action Plan</a> </p>
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                              <p ><a (click)="openActionPlan(item,actionplan)" data-toggle="modal" title="There are no task."   data-dismiss="modal" class="btn btn-sm btn-success text-bold btnTask tooltip-ui"><i class="fa fa-tags"></i>  Action Plan</a> </p>
+                            </ng-template>
+                            <p>{{item.CommentMsg}}</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </ejs-tooltip>
+                  </div>
+                <div class="form-group">
+                  <textarea [(ngModel)]="content" name="content" [mention]="dataUser" [mentionConfig]="{triggerChar:'@',labelKey:'Username'}" class="form-control" id="comment" placeholder="write a comment..." rows="6"></textarea>
+                </div>
+
+                <button (click)="addcomment()" type="button" class="btn btn-info float-right ">
+                  <i class="fa fa-paper-plane"></i> Post
+                </button>
+
+                <br>
+                <hr>
+                <br>
+
+                <ul class="media-list" id="media-list">
+                  <li *ngFor="let item of dataComment; let i=index"  class="media">
+                    <a class="float-left" *ngIf="item.Pin == false">
+                      <img src="../../../assets/image/user-icon.png" alt="" class="img-circle">
+                    </a>
+                    <div class="media-body" *ngIf="item.Pin == false">
+
+                      <span *ngIf="userid == item.UserID"  class="dropdown text-muted float-right " style="padding-left: 13px; cursor: pointer">
+                        <p (click)="pin(item.CommentID)"> <i class="fa fa-thumb-tack"></i></p>
+                      </span>
+                      <span class="text-muted float-right "  style="padding-left: 13px; cursor: pointer" >
+                        <p (click)="DeleteComment(item.CommentID)" class="text-danger"> <i class="fa fa-trash-o"></i> Delete</p>
+                      </span>
+                      <strong class="text-success">{{item.FullName}}</strong>
+                      <span class="text-muted float-right">
+                        <small class="text-muted">{{item.CommentedDate | date:'HH:mm a - dd/MM/yyy'}}</small>
+                      </span>
+                      <span *ngIf="item.Read" class="badge bg-green"> new</span>
+                      <p></p>
+
+                      <!-- <ng-container *ngIf="item.Task; else elseTemplate">
+                        <p><a  (click)="openActionPlan(item,actionplan)" data-toggle="modal"  data-dismiss="modal" class="btn btn-sm btn-danger text-bold btnTask"><i class="fa fa-tags"></i> Task</a> </p>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <p><a (click)="openActionPlan(item,actionplan)"  data-toggle="modal" title="There are no task."  data-dismiss="modal" class="btn btn-sm btn-success text-bold btnTask tooltip-ui"><i class="fa fa-tags"></i> Task</a> </p>
+                      </ng-template> -->
+
+                      <p>{{item.CommentMsg}}</p>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modalclose()">Close</button>
+    </div>
+  </ng-template>
+  <!-- endModal -->
+
+  <!-- modalActionPlan -->
+  <ng-template #actionplan let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <a (click)="backComment(comment)" ref="comment" data-toggle="modal" data-dismiss="modal" style="color:#fff;cursor:pointer" >
+          <i class="fa fa-reply"></i>
+        </a>&#32;
+        <span class="RemarkChart"> {{actionPlanText}}</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modalclose2()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <ejs-tab id="element">
+        <e-tabitems>
+
+          <e-tabitem>
+            <ng-template #headerText>
+              <div> List </div>
+            </ng-template>
+            <ng-template #content>
+              <ejs-grid #grid  (toolbarClick)='toolbarClick($event)' [allowResizing]='true' [allowExcelExport]='true' [gridLines]="lines" [searchSettings]="searchSettings" (actionBegin)='actionBegin($event)'  [toolbar]='toolbarOptions' [dataSource]='data' allowPaging='true' [pageSettings]='pageSettings' [editSettings]='editSettings'>
+                <e-columns >
+
+                  <e-column field='Title' headerText="{{'actionPlanName'|translate}}" [edit]="editparams"  width='200' textAlign='Center' >
+                    <ng-template #editTemplate let-data>
+                      <span [ngClass]="data.CreatedBy == userid || data.Auditor == userid ? 'e-input-group e-control-wrapper e-valid-input' : 'e-input-group e-control-wrapper e-valid-input e-disabled'"  >
+                        <ng-container *ngIf="data.CreatedBy == userid || data.Auditor == userid; else elseTemplate">
+                          <input  class="e-field e-input e-defaultcell" type="text" [value]="data.Title" name="Title" style="text-align:Center">
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="e-field e-input e-defaultcell" disabled="disabled" type="text" [value]="data.Title" name="Title" style="text-align:Center">
+                        </ng-template>
+                      </span>
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='Description' headerText="{{'Description' | translate}}" [edit]="editparams" editType='Description' width='120'  textAlign='Center' >
+                    <ng-template #editTemplate let-data>
+                      <span [ngClass]="data.CreatedBy == userid || data.Auditor == userid ? 'e-input-group e-control-wrapper e-valid-input' : 'e-input-group e-control-wrapper e-valid-input e-disabled' "  >
+                        <ng-container *ngIf="data.CreatedBy == userid || data.Auditor == userid; else elseTemplate">
+                          <input class="e-field e-input e-defaultcell" type="text" [value]="data.Description" name="Description" style="text-align:Center">
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <input class="e-field e-input e-defaultcell" disabled="disabled" type="text" [value]="data.Description" name="Description" style="text-align:Center">
+                        </ng-template>
+                      </span>
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='' isPrimaryKey='true' headerText='Attachments' width='150'  textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ng-container>
+                        <button (click)="ViewAllFile(data,DownloadFileActionPlan)"  class="btn-sm btn-info  "><i class="fas fa-eye"></i></button>
+                        <button (click)="UploadFile(data,UploadFileActionPlan)"  class="btn-sm btn-info  "><i class="fas fa-download"></i>Upload</button>
+                      </ng-container>
+
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='Tag' isPrimaryKey='true' headerText="{{'PIC' | translate}}" width='120' textAlign='Center'  ></e-column>
+
+                  <e-column field='Deadline' headerText="{{'Duedate' | translate}}" width='250'  textAlign='Center' >
+                    <ng-template #editTemplate let-data>
+                      <ejs-datepicker format='MM-dd-yyyy' [enabled]="false" placeholder="Order Date"
+                      [(ngModel)]="data.Deadline" (change)='DeadlineChange($event)' floatLabelType='Never'></ejs-datepicker>
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='UpdateSheduleDate' headerText="{{'Update_chedule_date' | translate}}" width='250' textAlign='Center'  >
+                    <ng-template #editTemplate let-data>
+                      <ejs-datepicker [enabled]="data.CreatedBy == userid || data.Auditor == userid ? true :false" format='MM-dd-yyyy' placeholder="Order Date"
+                      [(ngModel)]="data.UpdateSheduleDate" (change)='DeadlineUpdateChange($event)' floatLabelType='Never'></ejs-datepicker>
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='ActualFinishDate' headerText="{{'Actual_finish_date' | translate}}" isPrimaryKey='true'  width='250' textAlign='Center'  >
+                    <ng-template #headerTemplate let-data>
+                      <span>{{'Actual_finish_date' | translate}}</span>
+                    </ng-template>
+
+                  </e-column>
+
+                  <e-column field='Remark'  headerText="{{'remark' | translate}}" width='250' textAlign='Center'  >
+                    <ng-template #template let-data>
+                      {{data.Remark || '#N/A'}}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='CreatedByName' headerText="{{'createdBy' | translate}}" isPrimaryKey='true'  width='250' textAlign='Center'  ></e-column>
+
+                  <e-column field='ApprovedByNames' headerText='Approved By Name' isPrimaryKey='true'  width='250' textAlign='Center'  ></e-column>
+
+                  <e-column  isPrimaryKey='true' headerText="{{'Status' | translate}}" width='200' textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ejs-switch (click)="done(data)"   onLabel="YES" offLabel="NO" [disabled]='data.ListUserIDs.indexOf(userid) != -1 && data.ApprovedStatus == false ?"":"true"'   #wswitch [(checked)]="data.Status" ></ejs-switch>
+                    </ng-template>
+
+                  </e-column>
+
+                  <e-column  isPrimaryKey='true' headerText="{{'Approve' | translate}}" width='200' textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ejs-switch (click)="approval(data)"  onLabel="YES" offLabel="NO" [disabled]='data.CreatedBy == userid || data.Auditor == userid ?"":"true"'  #wswitch [(checked)]="data.ApprovedStatus" ></ejs-switch>
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='Option' isPrimaryKey='true' headerText="{{'ManageRecords' | translate}}" width='120' textAlign='Center' >
+                    <ng-template #template let-data>
+                      <button (click)="deleteActionPlan(data.ID)"  [disabled] = 'data.CreatedBy == userid || data.Auditor == userid || data.ListAuditorIDs.indexOf(userid) != -1 ?"" :"true"' ejs-button iconCss='e-icons e-delete' cssClass= 'e-flat'></button>
+                    </ng-template>
+                  </e-column>
+
+                  <e-column  isPrimaryKey='true' headerText='View History' width='150' textAlign='Center' >
+                    <ng-template #template let-data>
+                      <button (click)="viewHistoryActionPlan(data,History)" class="btn-sm btn-info  "><i class="fas fa-eye"></i></button>
+                    </ng-template>
+                  </e-column>
+
+                </e-columns>
+              </ejs-grid>
+            </ng-template>
+          </e-tabitem>
+
+          <e-tabitem *ngIf="isOwner">
+            <ng-template #headerText>
+              <div> Add </div>
+            </ng-template>
+            <ng-template #content>
+              <div class="addTask">
+                <div class="form-group">
+                  <label>Action Plan Name<b class="text-danger"> (*) </b></label>
+                  <input [(ngModel)]="taskname" type="text" class="form-control Title" autocomplete="off" placeholder="">
+                </div>
+
+                <div class="form-group">
+                  <label>Description<b class="text-danger"> (*) </b></label>
+                  <textarea [(ngModel)]="description" type="text" class="form-control Description" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group" tooltip-position="top" >
+                  <label class="control-label" for="Tag">Assign PIC<b class="text-danger"> (*) </b></label>
+                  <ejs-multiselect [fields]='fields' [allowCustomValue]=true [mode]='box' [(value)]='selectedAssignPIC' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+                </div>
+
+                <div class="form-group" tooltip-position="top" data-c-tooltip='Enter a character "@@" inside the textarea and you will see the dropdown list populated with suggestions.'>
+                  <label class="control-label" for="Auditor">Auditor<b class="text-danger"> (*) </b></label>
+                  <ejs-multiselect [fields]='fields' [allowCustomValue]=true [mode]='box' [(value)]='selectedAuditor' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+                </div>
+
+                <div  class="form-group">
+                  <label>Due date<b class="text-danger"> (*) </b></label><br>
+                  <ejs-datepicker (change)='onChange($event,dateValue)' width="500" [(ngModel)]="dateValue" format='MM-dd-yyyy' placeholder='Enter date' [value]=dateValue></ejs-datepicker>
+                </div>
+
+                <!-- <div class="form-group">
+                  <label>Attack File</label><br>
+                  <file-pond #myPond
+                  label-idle="Drop files here or <span class='filepond--label-action'>Browse</span>"
+                  allow-multiple="true"
+                  allowFileSizeValidation="true"
+                  maxFileSize="5MB"
+                  labelMaxFileSizeExceeded="File is too large"
+                  max-files="1"
+                  [files]="myFiles"
+                  [options]="pondOptions"
+                  (onprocessfile)="handleFileProcess($event)"
+                  (onremovefile)="pondHandleRemoveFile($event)">
+                  </file-pond>
+                </div> -->
+
+                <button type="button" (click)="addActionPlan(actionplan)" class="btn btn-success ">Save</button>
+                <div class="form-group">
+                  <b class="text-danger">(*) Require fields not to be blank. </b>
+                </div>
+
+              </div>
+            </ng-template>
+          </e-tabitem>
+
+        </e-tabitems>
+      </ejs-tab>
+    </div>
+
+    <div class="form-group">
+      <b class="text-danger">(+) Root Cause: </b> {{rootcause}}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modalclose2()">Close</button>
+      <button type="submit" (click)="backComment(comment)" class="btn btn-primary">Back to remark</button>
+    </div>
+  </ng-template>
+  <!-- endModal -->
+
+  <!-- modalCompare -->
+  <ng-template #compareModal let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <span class="RemarkChart"> Compare KPILevel</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modalCompareclose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ejs-tab id="element">
+        <e-tabitems>
+          <e-tabitem>
+            <ng-template #headerText>
+              <div> List </div>
+            </ng-template>
+            <ng-template #content>
+              <ejs-grid #gridcompare [allowResizing]='true'  [gridLines]="lines" (actionBegin)='actionBegin($event)' (selectCell)='selectCell($event)' (cellSelected)='cellSelected($event)' [dataSource]='datacompare' allowPaging='true' >
+                <e-columns >
+
+                  <e-column field='' headerText='#' width='70' textAlign='Left' isPrimaryKey='true' >
+                    <ng-template #template let-data>
+                      {{data.index}}
+                    </ng-template>
+                  </e-column>
+                  <e-column field='ID' isPrimaryKey='true' headerText='Check Box'  textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ng-container *ngIf="data.StatusPublic === true; else elseTemplate">
+                        <ejs-checkbox  (change)="getDataCompare($event,data)" #wcheckbox cssClass="e-success" ></ejs-checkbox>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <ejs-checkbox [disabled] = "true"  #wcheckbox cssClass="e-success" ></ejs-checkbox>
+                      </ng-template>
+
+                    </ng-template>
+
+                  </e-column>
+                  <e-column field='LevelNumber' isPrimaryKey='true' headerText='Level Number'  textAlign='Center' ></e-column>
+                  <e-column field='Area' isPrimaryKey='true' headerText='Area'  textAlign='Center' ></e-column>
+                  <e-column field='Status' isPrimaryKey='true' headerText='Data Status'  textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ng-container *ngIf="data.Status == true; else elseTemplate">
+                        <span class="badge badge-success">visible</span>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <span class="badge badge-danger">not visible</span>
+                      </ng-template>
+
+                    </ng-template>
+
+                  </e-column>
+                  <e-column field='StatusPublic' isPrimaryKey='true' headerText='Publicity Status'  textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ng-container *ngIf="data.StatusPublic == true; else elseTemplate">
+                        <span  class="badge badge-success">Public</span>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <span v-else class="badge badge-danger">Private</span>
+                      </ng-template>
+
+                    </ng-template>
+
+                  </e-column>
+                </e-columns>
+              </ejs-grid>
+            </ng-template>
+          </e-tabitem>
+
+        </e-tabitems>
+      </ejs-tab>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modalCompareclose()">Close</button>
+      <button type="submit" (click)="Compare()"  class="btn btn-primary">Compare</button>
+    </div>
+  </ng-template>
+  <!-- endModal -->
+
+  <!-- modalHistoryActionplan -->
+  <ng-template #History let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+        <h4 class="modal-title">
+          <span class="RemarkChart"> History ActionPlan: {{titleHistoryAc}} </span>
+        </h4>
+        <button type="button" (click)="closeHistoryModal()" class="btn btn-light" >Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="vtimeline row">
+        <div class="tltitle">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i><b>Time Line:</b>
+        </div>
+        <ul>
+          <li *ngFor="let item of dataHistoryAc; let i=index" >
+            <span *ngIf="item.ActualFinishDate != null" > {{item.CreatedBy}} finished this action plan on [ {{item.ActualFinishDate | date:'yyy/MM/dd - HH:mm:ss a'}} ] </span>
+            <span *ngIf="item.UpdateSheduleDate != null" > {{item.CreatedBy}} changes [ Update Shedule Date ] to [ {{item.UpdateSheduleDate | date:'yyy/MM/dd'}} ]</span>
+            <hr>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" (click)="closeHistoryModal()" class="btn btn-light" >Close</button>
+    </div>
+  </ng-template>
+  <!-- endmodal -->
+
+  <!-- exportAllAcyionPlan -->
+  <div style="visibility: hidden;">
+    <ejs-grid #gridexportall  [allowExcelExport]='true'  [dataSource]='AllDataActionPlanByKPILevelID'>
+      <e-columns >
+          <e-column field='Title' headerText="Action plan" [edit]="editparams"  width='200' textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'actionPlanName'| translate}}</span>
+            </ng-template>
+
+            <ng-template #editTemplate let-data>
+              <span [ngClass]="data.CreatedBy == userid || data.Auditor == userid ? 'e-input-group e-control-wrapper e-valid-input' : 'e-input-group e-control-wrapper e-valid-input e-disabled'"  >
+                <ng-container *ngIf="data.CreatedBy == userid || data.Auditor == userid; else elseTemplate">
+                  <input  class="e-field e-input e-defaultcell" type="text" [value]="data.Title" name="Title" style="text-align:Center">
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <input class="e-field e-input e-defaultcell" disabled="disabled" type="text" [value]="data.Title" name="Title" style="text-align:Center">
+                </ng-template>
+              </span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Description' headerText="Description" [edit]="editparams" editType='Description' width='120'  textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Description' | translate}}</span>
+            </ng-template>
+            <ng-template #editTemplate let-data>
+              <span [ngClass]="data.CreatedBy == userid || data.Auditor == userid ? 'e-input-group e-control-wrapper e-valid-input' : 'e-input-group e-control-wrapper e-valid-input e-disabled' "  >
+                <ng-container *ngIf="data.CreatedBy == userid || data.Auditor == userid; else elseTemplate">
+                  <input class="e-field e-input e-defaultcell" type="text" [value]="data.Description" name="Description" style="text-align:Center">
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <input class="e-field e-input e-defaultcell" disabled="disabled" type="text" [value]="data.Description" name="Description" style="text-align:Center">
+                </ng-template>
+              </span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Tag' isPrimaryKey='true' headerText="PIC" width='120' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'PIC' | translate}}</span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Deadline' headerText="Due Date" width='250'  textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Duedate' | translate}}</span>
+            </ng-template>
+            <ng-template #editTemplate let-data>
+              <ejs-datepicker format='MM-dd-yyyy' [enabled]="false" placeholder="Order Date"
+              [(ngModel)]="data.Deadline" (change)='DeadlineChange($event)' floatLabelType='Never'></ejs-datepicker>
+            </ng-template>
+          </e-column>
+
+          <e-column field='UpdateSheduleDate' headerText="Update Chedule Date" width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Update_chedule_date' | translate}}</span>
+            </ng-template>
+            <ng-template #editTemplate let-data>
+              <ejs-datepicker [enabled]="data.CreatedBy == userid || data.Auditor == userid ? true :false" format='MM-dd-yyyy' placeholder="Order Date"
+              [(ngModel)]="data.UpdateSheduleDate" (change)='DeadlineUpdateChange($event)' floatLabelType='Never'></ejs-datepicker>
+            </ng-template>
+          </e-column>
+
+          <e-column field='ActualFinishDate' headerText="Approved Time" isPrimaryKey='true'  width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Actual_finish_date' | translate}}</span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Remark'  headerText="Remark" width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'remark' | translate}}</span>
+            </ng-template>
+            <ng-template #template let-data>
+              {{data.Remark || '#N/A'}}
+            </ng-template>
+          </e-column>
+
+          <e-column field='CreatedByName' headerText="Created By" isPrimaryKey='true'  width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'createdBy' | translate}}</span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='ApprovedByNames' headerText='Approved By Name' isPrimaryKey='true'  width='250' textAlign='Center'  ></e-column>
+
+          <e-column field='Status2' isPrimaryKey='true' headerText="Status" width='200' textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Status' | translate}}</span>
+            </ng-template>
+            <ng-template #template let-data>
+              <ejs-switch (click)="done(data)"   onLabel="YES" offLabel="NO" [disabled]='data.ListUserIDs.indexOf(userid) != -1 && data.ApprovedStatus == false ?"":"true"'   #wswitch [(checked)]="data.Status" ></ejs-switch>
+            </ng-template>
+
+          </e-column>
+
+          <e-column field= 'ApprovedStatus2' isPrimaryKey='true' headerText="Approve" width='200' textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Approve' | translate}}</span>
+            </ng-template>
+            <ng-template #template let-data>
+              <ejs-switch (click)="approval(data)"  onLabel="YES" offLabel="NO" [disabled]='data.CreatedBy == userid || data.Auditor == userid ?"":"true"'  #wswitch [(checked)]="data.ApprovedStatus" ></ejs-switch>
+            </ng-template>
+          </e-column>
+
+
+      </e-columns>
+    </ejs-grid>
+  </div>
+
+   <!-- export -->
+  <div style="visibility: hidden;">
+    <ejs-grid #gridexport  [allowExcelExport]='true'  [dataSource]='data'>
+      <e-columns >
+          <e-column field='Title' headerText="Action Plan" [edit]="editparams"  width='200' textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'actionPlanName'| translate}}</span>
+            </ng-template>
+
+            <ng-template #editTemplate let-data>
+              <span [ngClass]="data.CreatedBy == userid || data.Auditor == userid ? 'e-input-group e-control-wrapper e-valid-input' : 'e-input-group e-control-wrapper e-valid-input e-disabled'"  >
+                <ng-container *ngIf="data.CreatedBy == userid || data.Auditor == userid; else elseTemplate">
+                  <input  class="e-field e-input e-defaultcell" type="text" [value]="data.Title" name="Title" style="text-align:Center">
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <input class="e-field e-input e-defaultcell" disabled="disabled" type="text" [value]="data.Title" name="Title" style="text-align:Center">
+                </ng-template>
+              </span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Description' headerText="Description" [edit]="editparams" editType='Description' width='120'  textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Description' | translate}}</span>
+            </ng-template>
+            <ng-template #editTemplate let-data>
+              <span [ngClass]="data.CreatedBy == userid || data.Auditor == userid ? 'e-input-group e-control-wrapper e-valid-input' : 'e-input-group e-control-wrapper e-valid-input e-disabled' "  >
+                <ng-container *ngIf="data.CreatedBy == userid || data.Auditor == userid; else elseTemplate">
+                  <input class="e-field e-input e-defaultcell" type="text" [value]="data.Description" name="Description" style="text-align:Center">
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <input class="e-field e-input e-defaultcell" disabled="disabled" type="text" [value]="data.Description" name="Description" style="text-align:Center">
+                </ng-template>
+              </span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Tag' isPrimaryKey='true' headerText="PIC" width='120' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'PIC' | translate}}</span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Deadline' headerText="Due Date" width='250'  textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Duedate' | translate}}</span>
+            </ng-template>
+            <ng-template #editTemplate let-data>
+              <ejs-datepicker format='MM-dd-yyyy' [enabled]="false" placeholder="Order Date"
+              [(ngModel)]="data.Deadline" (change)='DeadlineChange($event)' floatLabelType='Never'></ejs-datepicker>
+            </ng-template>
+          </e-column>
+
+          <e-column field='UpdateSheduleDate' headerText="Update Chedule Date" width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Update_chedule_date' | translate}}</span>
+            </ng-template>
+            <ng-template #editTemplate let-data>
+              <ejs-datepicker [enabled]="data.CreatedBy == userid || data.Auditor == userid ? true :false" format='MM-dd-yyyy' placeholder="Order Date"
+              [(ngModel)]="data.UpdateSheduleDate" (change)='DeadlineUpdateChange($event)' floatLabelType='Never'></ejs-datepicker>
+            </ng-template>
+          </e-column>
+
+          <e-column field='ActualFinishDate' headerText="Approved Date time" isPrimaryKey='true'  width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Actual_finish_date' | translate}}</span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='Remark'  headerText="Remark" width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'remark' | translate}}</span>
+            </ng-template>
+            <ng-template #template let-data>
+              {{data.Remark || '#N/A'}}
+            </ng-template>
+          </e-column>
+
+          <e-column field='CreatedByName' headerText="Created By" isPrimaryKey='true'  width='250' textAlign='Center'  >
+            <ng-template #headerTemplate let-data>
+              <span>{{'createdBy' | translate}}</span>
+            </ng-template>
+          </e-column>
+
+          <e-column field='ApprovedByNames' headerText='Approved By Name' isPrimaryKey='true'  width='250' textAlign='Center'  ></e-column>
+
+          <e-column field= 'Status2' isPrimaryKey='true' headerText="Status" width='200' textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Status' | translate}}</span>
+            </ng-template>
+            <ng-template #template let-data>
+              <ejs-switch (click)="done(data)"   onLabel="YES" offLabel="NO" [disabled]='data.ListUserIDs.indexOf(userid) != -1 && data.ApprovedStatus == false ?"":"true"'   #wswitch [(checked)]="data.Status" ></ejs-switch>
+            </ng-template>
+
+          </e-column>
+
+          <e-column field= 'ApprovedStatus2' isPrimaryKey='true' headerText="Approve" width='200' textAlign='Center' >
+            <ng-template #headerTemplate let-data>
+              <span>{{'Approve' | translate}}</span>
+            </ng-template>
+            <ng-template #template let-data>
+              <ejs-switch (click)="approval(data)"  onLabel="YES" offLabel="NO" [disabled]='data.CreatedBy == userid || data.Auditor == userid ?"":"true"'  #wswitch [(checked)]="data.ApprovedStatus" ></ejs-switch>
+            </ng-template>
+          </e-column>
+
+
+      </e-columns>
+    </ejs-grid>
+  </div>
+  <!-- endexport -->
+
+  <!-- List File Download -->
+  <ng-template #UploadFileActionPlan let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <span class="RemarkChart"> AttachFile</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modaluploadFileclose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <file-pond #myPondUpload
+        label-idle="Drop files here or <span class='filepond--label-action'>Browse</span>"
+        allow-multiple="true"
+        allowFileSizeValidation="true"
+        maxFileSize="5MB"
+        labelMaxFileSizeExceeded="File is too large"
+        [files]="myFiles"
+        [options]="pondOptions"
+        (onprocessfile)="handleFileProcess($event)"
+        (onaddfile)="pondHandleAddFile($event)"
+        (onremovefile)="pondHandleRemoveFile($event)">
+      </file-pond>
+    </div>
+    <div class="modal-footer">
+      <button type="button" (click)="uploadFileAc()" class="btn btn-success" >
+        Upload
+      </button>
+      <button type="button" class="btn btn-light" (click)="modaluploadFileclose()">Close</button>
+    </div>
+  </ng-template>
+  <!-- end List File Download-->
+
+   <!-- UploadFile actionplan-->
+   <ng-template #DownloadFileActionPlan let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <span class="RemarkChart"> List File</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modalListFileclose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ejs-grid #gridlistfile [allowResizing]='true'  [gridLines]="lines" [dataSource]='dataListFile' allowPaging='true' >
+        <e-columns >
+          <e-column field='Name' headerText='File Name' width='250' textAlign='Center' isPrimaryKey='true' >
+          </e-column>
+          <e-column field='' isPrimaryKey='true' headerText='Options' width='150' textAlign='Center' >
+            <ng-template #template let-data>
+              <button (click)="DownloadExcel(data)"  class="btn-sm btn-info  "><i class="fas fa-download"></i></button>
+            </ng-template>
+          </e-column>
+        </e-columns>
+      </ejs-grid>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modalListFileclose()">Close</button>
+    </div>
+  </ng-template>
+  <!-- end UploadFile actionplan-->
+</div>

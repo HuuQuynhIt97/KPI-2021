@@ -1,0 +1,576 @@
+<!-- <section class="content">
+  <div class="container-fluid">
+  </div>
+</section> -->
+<div class="row">
+
+  <div class="col-md-12">
+    <div class="callout bg-yellow-gradient" style="border-color:#c57901; background-color: #1b945c; color: white;">
+      <h3>6. OC KPI</h3>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Organization Chart</h5>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body table-responsive p-0">
+        <ejs-treegrid
+            #treegrid
+            [dataSource]="data"
+            childMapping="children"
+            [treeColumnIndex]="1"
+            [pageSettings]="pageSettings"
+            [allowExcelExport]="true"
+            [allowPdfExport]="true"
+            [allowSorting]="true"
+            [editSettings]="editing"
+            (rowSelected)="rowSelected($event)"
+
+            [searchSettings]="searchSettings"
+            [toolbar]="toolbar" >
+            <e-columns>
+              <e-column field="levelnumber" width="50" isPrimaryKey="true" headerText="Level" [disableHtmlEncode]="false">
+              </e-column>
+              <e-column field="title" editType="stringedit" headerText="OC Name" [edit]="editparams" [disableHtmlEncode]="false">
+                <ng-template #template let-data>
+                  {{data.title}}
+                </ng-template>
+              </e-column>
+            </e-columns>
+        </ejs-treegrid>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">KPI  {{title}}</h5>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="isHide" class="card-body table-responsive p-0">
+        <ejs-grid  #grid [allowResizing]="true" [gridLines]="lines" [searchSettings]="searchSettings"   [toolbar]='toolbarOptions' [dataSource]='data2' allowPaging='true' [pageSettings]='pageSettings2' >
+          <e-columns>
+            <e-column  headerText='#' width='50' textAlign='Left' isPrimaryKey='true'>
+              <ng-template #template let-data>
+                <span>{{No(data.index)}}</span>
+              </ng-template>
+            </e-column>
+            <e-column field='Name' headerText='' width='80' textAlign='Left' >
+              <ng-template #template let-data>
+                <ejs-switch (click)="update(data)"   #wswitch [(checked)]="data.Checked" ></ejs-switch>
+              </ng-template>
+            </e-column>
+
+            <e-column field='Name' headerText='KPI Organization Chart' width='200' textAlign='Left' >
+              <ng-template #template let-data>
+                {{data.Name}}
+              </ng-template>
+            </e-column>
+
+            <e-column field='Kind' headerText='Kind' width='200' textAlign='Center' ></e-column>
+
+            <e-column field='Kind' headerText='Conversion perfomance' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <button (click)="conversions(data,score)" style="font-size: 12px;" class="btn-sm btn-info ">
+                  <i class="fa fa-pencil-square-o"></i>
+                </button>
+              </ng-template>
+            </e-column>
+
+            <e-column field='' headerText='Weekly' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <ejs-switch (click)="updateweekly(data,weekly)" cssClass="e-success"  #wswitch [(checked)]="data.WeeklyChecked" ></ejs-switch>
+              </ng-template>
+            </e-column>
+
+            <e-column field='' headerText='Monthly' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <ejs-switch (click)="updatemonthly(data,monthly)" cssClass="e-success"  #wswitch [(checked)]="data.MonthlyChecked" ></ejs-switch>
+              </ng-template>
+            </e-column>
+
+            <e-column field='' headerText='Half Year' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <ejs-switch (click)="updatehalfyear(data,halfyear)" cssClass="e-success"  #wswitch [(checked)]="data.HalfYearChecked" ></ejs-switch>
+              </ng-template>
+            </e-column>
+
+            <e-column field='' headerText='Quaterly' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <ejs-switch (click)="updatequaterly(data,quaterly)" cssClass="e-success"  #wswitch [(checked)]="data.QuarterlyChecked" ></ejs-switch>
+              </ng-template>
+            </e-column>
+
+            <e-column field='' headerText='Yearly' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <ejs-switch (click)="updateyearly(data,yearly)" cssClass="e-success"  #wswitch [(checked)]="data.YearlyChecked" ></ejs-switch>
+              </ng-template>
+            </e-column>
+
+            <e-column field='' headerText='Modify' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <ng-container *ngIf="data.YearlyChecked || data.QuarterlyChecked || data.HalfYearChecked || data.MonthlyChecked || data.WeeklyChecked === true; else elseTemplate">
+                  <button (click)="modify(data,showdata)" ejs-button iconCss='e-icons e-update' cssClass= 'e-outline'></button>
+                </ng-container>
+                <ng-template #elseTemplate>
+
+                </ng-template>
+
+              </ng-template>
+            </e-column>
+
+            <e-column field='' headerText='Modified by' width='150' textAlign='Center' >
+              <ng-template #template let-data>
+
+                <ng-container *ngIf="data.Checked; else elseTemplate">
+                  <span class="badge badge-pill badge-dark"> {{ data.ModifyBy || "#N/A"}}</span>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <span class="badge badge-pill badge-dark"> {{ "#N/A"}}</span>
+                </ng-template>
+
+              </ng-template>
+            </e-column>
+
+          </e-columns>
+        </ejs-grid>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- score-modal -->
+  <ng-template #score let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fas fa-plus"></i> Conversion Perfomance Data
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ejs-grid
+        #gridScore
+        [gridLines]="lines"
+        [allowTextWrap]="true"
+        [allowResizing]="true"
+        (actionBegin)="actionBeginScore($event)"
+        [searchSettings]="searchSettings"
+        [editSettings]="editSettings"
+        [dataSource]="dataConversion"
+        [toolbar]="toolbarScoreOptions"
+        [allowPaging]="true"
+        [pageSettings]="pageSettings"
+      >
+        <e-columns>
+          <e-column field="Score" headerText="Score for perfomance"  width="80" textAlign="Center"></e-column>
+          <e-column field="Min"  headerText="Min %"  textAlign="Center"></e-column>
+          <e-column field="Max"  headerText="Max %"  textAlign="Center"></e-column>
+        </e-columns>
+      </ejs-grid>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+  </ng-template>
+  <!-- end score-modal -->
+
+  <!-- weekly-modal -->
+  <ng-template #weekly let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Weekly
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="box-body">
+          <div class="form-group">
+            <label for="weekly">Day of the week </label>
+            <select [(ngModel)]="dayweekly" class="form-control weekly" id="weekly">
+              <option value="">Choose day of the week</option>
+              <option value="2">Monday</option>
+              <option value="3">Tuesday</option>
+              <option value="4">Wednesday</option>
+              <option value="5">Thursday</option>
+              <option value="6">Friday</option>
+              <option value="7">Saturday</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="target">Woking Plan</label>
+            <textarea [(ngModel)]="workweekly" class="form-control target" id="target" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <ejs-radiobutton label='Public'  (change)="CheckWeekPublic($event)" name='default' [checked]="weekpublic"></ejs-radiobutton>
+          </div>
+          <div class="form-group">
+            <ejs-radiobutton label='Private' (change)="CheckPrivateW($event)" name='default' [checked]="!weekpublic"></ejs-radiobutton>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveWeekly()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+  <!-- end weekly-modal -->
+
+  <!-- monthly-modal -->
+  <ng-template #monthly let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+        <h4 class="modal-title">
+            <i class="fa fa-plus"></i> Monthly
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <div class="box-body">
+        <div class='form-group'>
+          <label for="monthly">Monthly</label>
+          <div class='input-group date monthly'>
+            <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dateValue></ejs-datepicker>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="target">Woking Plan</label>
+          <textarea [(ngModel)]="workmonthly" class="form-control target" id="target" rows="3" ></textarea>
+
+        </div>
+
+        <div class="form-group">
+          <ejs-radiobutton label='Public' (change)="CheckMonthPublic($event)" name='default' [checked]="monthpublic"></ejs-radiobutton>
+        </div>
+        <div class="form-group">
+          <ejs-radiobutton label='Private' (change)="CheckPrivateM($event)" name='default' [checked]="!monthpublic"></ejs-radiobutton>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveMonthly()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+  <!-- end monthly-modal -->
+
+  <!-- halfyear-modal -->
+  <ng-template #halfyear let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Half Year
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="box-body">
+        <div class='form-group'>
+          <label for="monthly">Half Year</label>
+          <div class='input-group date monthly'>
+            <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dateValue></ejs-datepicker>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="target">Woking Plan</label>
+          <textarea [(ngModel)]="workhalfyear" class="form-control target" id="target" rows="3" ></textarea>
+
+        </div>
+
+        <div class="form-group">
+          <ejs-radiobutton label='Public' (change)="CheckHalfPublic($event)" name='default' [checked]="halfpublic"></ejs-radiobutton>
+        </div>
+        <div class="form-group">
+          <ejs-radiobutton label='Private' (change)="CheckPrivateH($event)" name='default' [checked]="!halfpublic"></ejs-radiobutton>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveHalfYear()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+  <!-- end halfyear-modal -->
+
+  <!-- quaterly-modal -->
+  <ng-template #quaterly let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Quaterly
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="box-body">
+        <div class='form-group'>
+          <label for="monthly">Quaterly</label>
+          <div class='input-group date monthly'>
+            <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dayquater></ejs-datepicker>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="target">Woking Plan</label>
+          <textarea [(ngModel)]="workquaterly" class="form-control target" id="target" rows="3" ></textarea>
+
+        </div>
+
+        <div class="form-group">
+          <ejs-radiobutton label='Public' (change)="CheckQuaterPublic($event)" name='default' [checked]="quaterpublic"></ejs-radiobutton>
+        </div>
+        <div class="form-group">
+          <ejs-radiobutton label='Private' (change)="CheckPrivateQ($event)" name='default' [checked]="!quaterpublic"></ejs-radiobutton>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveQuaterly()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+  <!-- end quaterly-modal -->
+
+  <!-- yearly-modal -->
+  <ng-template #yearly let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Yearly
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="box-body">
+        <div class='form-group'>
+          <label for="monthly">Yearly</label>
+          <div class='input-group date monthly'>
+            <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dayyear></ejs-datepicker>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="target">Woking Plan</label>
+          <textarea [(ngModel)]="workyearly" class="form-control target" id="target" rows="3" ></textarea>
+
+        </div>
+
+        <div class="form-group">
+          <ejs-radiobutton label='Public' (change)="CheckYearPublic($event)" name='default' [checked]="yearpublic"></ejs-radiobutton>
+        </div>
+        <div class="form-group">
+          <ejs-radiobutton label='Private' (change)="CheckPrivateY($event)" name='default' [checked]="!yearpublic"></ejs-radiobutton>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveYearly()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+  <!-- end yearly-modal -->
+
+  <!-- showdata-modal -->
+  <ng-template #showdata let-modal>
+
+    <!-- weekly -->
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Weekly
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="box-body">
+          <div class="form-group">
+            <label for="weekly">Day of the week </label>
+            <select [(ngModel)]="dayweekly" class="form-control weekly" id="weekly">
+              <option value="">Choose day of the week</option>
+              <option value="2">Monday</option>
+              <option value="3">Tuesday</option>
+              <option value="4">Wednesday</option>
+              <option value="5">Thursday</option>
+              <option value="6">Friday</option>
+              <option value="7">Saturday</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="target">Woking Plan</label>
+            <textarea [(ngModel)]="workweekly" class="form-control target" id="target" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <ejs-radiobutton label='Public' (change)="CheckWeekPublic($event)"  [checked]="weekpublic"></ejs-radiobutton>
+          </div>
+          <div class="form-group">
+            <ejs-radiobutton label='Private' (change)="CheckPrivateW($event)"  [checked]="!weekpublic"></ejs-radiobutton>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveWeekly()" class="btn btn-primary">Save changes</button>
+    </div>
+    <br>
+
+    <!-- monthly -->
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Monthly
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div class="box-body">
+          <div class='form-group'>
+              <label for="monthly">Monthly</label>
+              <div class='input-group date monthly'>
+                  <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dateValue></ejs-datepicker>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="target">Woking Plan</label>
+              <textarea [(ngModel)]="workmonthly" class="form-control target" id="target" rows="3" ></textarea>
+
+          </div>
+
+          <div class="form-group">
+              <ejs-radiobutton label='Public' (change)="CheckMonthPublic($event)"  [checked]="monthpublic"></ejs-radiobutton>
+          </div>
+          <div class="form-group">
+              <ejs-radiobutton label='Private' (change)="CheckPrivateM($event)"  [checked]="!monthpublic"></ejs-radiobutton>
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        <button type="submit" (click)="saveMonthly()" class="btn btn-primary">Save changes</button>
+    </div>
+
+    <hr>
+    <!-- halfyear -->
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+        <h4 class="modal-title">
+            <i class="fa fa-plus"></i> Half Year
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="box-body">
+            <div class='form-group'>
+                <label for="monthly"> Half Year</label>
+                <div class='input-group date monthly'>
+                    <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dateValue></ejs-datepicker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="target">Woking Plan</label>
+                <textarea [(ngModel)]="workhalfyear" class="form-control target" id="target" rows="3" ></textarea>
+
+            </div>
+
+            <div class="form-group">
+                <ejs-radiobutton label='Public' (change)="CheckHalfPublic($event)"  [checked]="halfpublic"></ejs-radiobutton>
+            </div>
+            <div class="form-group">
+                <ejs-radiobutton label='Private' (change)="CheckPrivateH($event)"  [checked]="!halfpublic"></ejs-radiobutton>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        <button type="submit" (click)="saveHalfYear()" class="btn btn-primary">Save changes</button>
+    </div>
+
+    <hr>
+    <!-- quaterly -->
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+        <h4 class="modal-title">
+            <i class="fa fa-plus"></i> Quaterly
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="box-body">
+            <div class='form-group'>
+                <label for="monthly">Quaterly</label>
+                <div class='input-group date monthly'>
+                    <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dayquater></ejs-datepicker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="target">Woking Plan</label>
+                <textarea [(ngModel)]="workquaterly" class="form-control target" id="target" rows="3" ></textarea>
+            </div>
+            <div class="form-group">
+                <ejs-radiobutton label='Public' (change)="CheckQuaterPublic($event)" [checked]="quaterpublic"></ejs-radiobutton>
+            </div>
+            <div class="form-group">
+                <ejs-radiobutton label='Private' (change)="CheckPrivateQ($event)"  [checked]="!quaterpublic"></ejs-radiobutton>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        <button type="submit" (click)="saveQuaterly()" class="btn btn-primary">Save changes</button>
+    </div>
+
+    <hr>
+    <!-- yearly -->
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+        <h4 class="modal-title">
+            <i class="fa fa-plus"></i> Yearly
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="box-body">
+            <div class='form-group'>
+                <label for="monthly">Yearly</label>
+                <div class='input-group date monthly'>
+                    <ejs-datepicker (change)='onChange($event)' width="500" format='MM-dd-yyyy' placeholder='Enter date' [value]=dayyear></ejs-datepicker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="target">Woking Plan</label>
+                <textarea [(ngModel)]="workyearly" class="form-control target" id="target" rows="3" ></textarea>
+
+            </div>
+
+            <div class="form-group">
+                <ejs-radiobutton label='Public' (change)="CheckYearPublic($event)"  [checked]="yearpublic"></ejs-radiobutton>
+            </div>
+            <div class="form-group">
+                <ejs-radiobutton label='Private' (change)="CheckPrivateY($event)"  [checked]="!yearpublic"></ejs-radiobutton>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        <button type="submit" (click)="saveYearly()" class="btn btn-primary">Save changes</button>
+    </div>
+
+
+  </ng-template>
+  <!-- end showdata-modal -->
+
+</div>

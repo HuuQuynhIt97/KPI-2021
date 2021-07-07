@@ -1,0 +1,379 @@
+<!-- <section class="content">
+</section> -->
+<!-- <div class="col-md-12">
+</div> -->
+<div class="box boxDataset boxdataset-scrollbar">
+
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+  <div class="box-body ">
+    <div class="col-md-12">
+
+      <div class="form-inline"   id="searchMonth">
+        <label class="my-1 mr-2" for="startMonth">Period</label>
+
+        <div class="form-group">
+          <ejs-dropdownlist (change)="OnchangePeriod($event)" [value]="value" [(ngModel)]="value" #dropdownlistPeriod id='dropdownlistPeriod'  placeholder='Select a Period' [allowFiltering]='allowFiltering'  [dataSource]='dataperiod' [fields]='fieldsperiod'></ejs-dropdownlist>
+        </div>
+
+        <!-- @* month *@ -->
+        <div  class="form-group" *ngIf="periodDefault ===  'm'" >
+
+          <label class="my-1 mr-2" for="startMonth">Year</label>
+          <select [(ngModel)]="YearM" (change)="changeyears($event)" class="custom-select form-control my-1 mr-sm-2" id="startYear">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+          </select>
+
+          <label class="my-1 mr-2" for="startMonth">Start</label>
+          <select [(ngModel)]="vstartM"  (change)="starts($event)" class="custom-select form-control my-1 mr-sm-2" id="startMonth">
+            <option value="0" >Choose...</option>
+            <option value="1" >Jan</option>
+            <option value="2">Feb</option>
+            <option value="3">Mar</option>
+            <option value="4">Apr</option>
+            <option value="5">May</option>
+            <option value="6">Jun</option>
+            <option value="7">Jul</option>
+            <option value="8">Aug</option>
+            <option value="9">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+          </select>
+
+          <label class="my-1 mr-2" for="endMonth">End</label>
+          <select [(ngModel)]="vendM"  (change)="ends($event)" class="custom-select form-control my-1 mr-sm-2" id="endMonth">
+            <option value="0" >Choose...</option>
+            <option value="1">Jan</option>
+            <option value="2">Feb</option>
+            <option value="3">Mar</option>
+            <option value="4">Apr</option>
+            <option value="5">May</option>
+            <option value="6">Jun</option>
+            <option value="7">Jul</option>
+            <option value="8">Aug</option>
+            <option value="9">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12" >Dec</option>
+          </select>
+        </div>
+
+        <!-- @* week *@ -->
+        <div  class="form-group" *ngIf="periodDefault ===  'w'">
+          <label class="my-1 mr-2" for="startMonth">Year</label>
+          <select [(ngModel)]="YearM" (change)="changeyears($event)" class="custom-select form-control my-1 mr-sm-2" id="startYear">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+          </select>
+
+          <label class="my-1 mr-2" for="startWeek">Start</label>
+          <select [(ngModel)]="vstartW"  (change)="starts($event)" class="custom-select form-control my-1 mr-sm-2" id="startWeek">
+            <option value="0" >Choose...</option>
+
+            <option *ngFor="let n of counter(53); let i=index"  [value]="i+1" >Week {{i+1}}</option>
+          </select>
+          <label class="my-1 mr-2" for="endWeek">End</label>
+          <select [(ngModel)]="vendW"  (change)="ends($event)" class="custom-select form-control my-1 mr-sm-2" id="endWeek">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(53); let i=index"  [value]="i+1"  >Week {{i+1}}</option>
+          </select>
+        </div>
+
+        <!-- @* quater *@ -->
+        <div  class="form-group" *ngIf="periodDefault ===  'q'" >
+          <label class="my-1 mr-2" for="startMonth">Year</label>
+          <select [(ngModel)]="YearM" (change)="changeyears($event)" class="custom-select form-control my-1 mr-sm-2" id="startYear">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+          </select>
+
+          <label class="my-1 mr-2" for="startMonth">Start</label>
+          <select [(ngModel)]="vstartQ"  (change)="starts($event)" class="custom-select form-control my-1 mr-sm-2" id="startQuarter">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(4); let i=index" [value]="i+1" >Quater {{i+1}}</option>
+          </select>
+          <label class="my-1 mr-2" for="endMonth">End</label>
+          <select [(ngModel)]="vendQ" (change)="ends($event)" class="custom-select form-control my-1 mr-sm-2" id="endQuarter">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(4); let i=index"  [value]="i+1" >Quater {{i+1}}</option>
+          </select>
+        </div>
+
+        <!-- @* half *@ -->
+        <div  class="form-group" *ngIf="periodDefault ===  'h'" >
+          <label class="my-1 mr-2" for="startMonth">Year</label>
+          <select [(ngModel)]="YearM" (change)="changeyears($event)" class="custom-select form-control my-1 mr-sm-2" id="startYear">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+          </select>
+
+          <label class="my-1 mr-2" for="YearOfYear">Year</label>
+          <select [(ngModel)]="year" (change)="changeyears($event)" class="custom-select form-control my-1 mr-sm-2 YearOfYear" id="YearOfYear">
+            <option [value]="0" selected>Choose...</option>
+            <option *ngFor="let n of counter(100);let i= index"  [value]="2000 + (i+1)" >{{2000 + (i+1)}}</option>
+          </select>
+        </div>
+
+        <!-- @* year *@ -->
+        <div class="form-group" *ngIf="periodDefault ===  'y'" >
+          <label class="my-1 mr-2" for="startMonth">Start</label>
+          <select [(ngModel)]="vstartY"  (change)="starts($event)" class="custom-select form-control my-1 mr-sm-2" id="startYear">
+            <option value="0" selected>Choose...</option>
+
+            <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+          </select>
+          <label class="my-1 mr-2" for="endMonth">End</label>
+          <select [(ngModel)]="vendY" (change)="ends($event)" class="custom-select form-control my-1 mr-sm-2" id="endYear">
+            <option value="0" selected>Choose...</option>
+            <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+          </select>
+        </div>
+
+        <label class="my-1 mr-2" for="endMonth">Category</label>
+
+        <div class="form-group">
+          <select (change)="OnchangeCategory($event)"  class="custom-select form-control" id="YearOfYear">
+            <option value="0" selected>All</option>
+
+            <option *ngFor="let item of categorymodel" [value]="item.ID">{{item.Name}}</option>
+          </select>
+        </div>
+
+        <p style="color:transparent">|</p>
+        <div class="form-group">
+          <button (click)="refresh()"  type="button" class="btn bg-teal  ">
+            <i class="fa fa-refresh"></i> Refresh
+          </button>
+        </div>
+
+        <p style="color:transparent">|</p>
+        <div class="form-group">
+          <button (click)="exportTableToExcel('tblDataset2','KPI System Download')" type="button" class="btn bg-teal">
+            <i class="fa fa-file-excel-o"></i> Export
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-body table-responsive no-padding" id="tblDataset2" >
+    <div style="overflow-x:auto;" class="col-md-12" >
+      <hr style="color: transparent">
+      <div class="cart">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-4">
+              <h3 class="card-title">List Overview</h3>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-3" ></div>
+
+                <div class="col-md-4" style="text-align: right;">
+                  <label>Filter by Level</label>
+                </div>
+
+                <div class="col-md-5">
+                  <ejs-dropdowntree id='dropdownTree' (removed)='removed()' (select)="select()" [(value)]='ListLevel' placeholder='All'  #dropdownTree [changeOnBlur]="false" [fields]='field' [showCheckBox]='true'></ejs-dropdowntree>
+                  <!-- <ejs-multiselect (removed)='removed($event)' (select)="select($event)" [popupHeight]='popHeight'  showDropDownIcon='true' [fields]='fields'  [(value)]='ListLevel' [mode]='mode' id='multiselect-checkbox'  [dataSource]='dataOC' placeholder='All'></ejs-multiselect> -->
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- <hr> -->
+
+        </div>
+
+        <div *ngIf="isYear === false && isHalf === false"  >
+          <ng-container *ngFor="let items of data">
+            <div class="cart">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-4">
+                    <span style="color: red">{{items.Area}}</span>
+                  </div>
+                  <div class="col-md-4" style="text-align: center;">
+                    <span style="color: black;font-weight: bold ;font-size: 18px;">Level {{items.Level}}</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0 tableFixHead" style="height: 500px">
+              <table border="1" class="table table-head-fixed table-bordered text-nowrap" >
+                <tr>
+                  <th>No.</th>
+                  <th>Kind</th>
+                  <th>KPI</th>
+                  <th>Manager</th>
+                  <th>Owner</th>
+                  <th>Updater</th>
+                  <th>Target</th>
+                  <th *ngFor="let item of title"  class="text-center">{{item}}</th>
+                </tr>
+                <tr *ngFor="let item of items.Data; let i=index" >
+                  <td>{{i+1}}</td>
+                  <td>{{item.CategoryCode}}</td>
+                  <td (click)="pushTrendView(item)">
+                    <span style="text-decoration: none ; cursor:pointer ;color:green" >{{item.KPIName}}</span>
+                  </td>
+                  <td>{{item.Manager}}</td>
+                  <td>{{item.Owner}}</td>
+                  <td>{{item.Updater}}</td>
+
+                  <ng-container *ngIf="item.Unit === 'Percentage'; else elseTemplate">
+                    <td style="background-color: yellow" class="datasetTd text-center active-tdtarget">{{item.Target + '%'}}</td>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <td style="background-color: yellow" class="datasetTd text-center active-tdtarget">{{item.Target }}</td>
+                  </ng-template>
+
+                  <td *ngFor="let item2 of item.Datasets" [class]="checktarget(item,item2)">
+                    <ng-container *ngIf="item.Unit === 'Percentage'; else elseTemplate">
+                      <span> {{item2.Value == 0 ? "N/A" : item2.Value + '%'}} </span>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                      <span> {{item2.Value }} </span>
+                    </ng-template>
+                  </td>
+
+                </tr>
+              </table>
+            </div>
+            <hr>
+          </ng-container>
+        </div>
+
+        <div *ngIf="isYear === false && isHalf == true"  >
+          <ng-container *ngFor="let items of data">
+            <div class="cart">
+              <div class="card-header">
+                <span style="color: red">{{items.Area}}</span>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0 tableFixHead" style="height: 500px">
+              <table border="1" class="table table-head-fixed table-bordered text-nowrap" >
+                <tr>
+                  <th>No.</th>
+                  <th>Kind</th>
+                  <th>KPI</th>
+                  <th>Manager</th>
+                  <th>Owner</th>
+                  <th>Updater</th>
+                  <th>H1 Target</th>
+                  <th>H2 Target</th>
+                  <th *ngFor="let item of title" class="text-center">{{item}}</th>
+                </tr>
+                <tr *ngFor="let item of items.Data; let i=index" >
+                  <ng-container *ngIf="item.Datasets.length >= 0">
+                    <td>{{i+1}}</td>
+                    <td>{{item.CategoryCode}}</td>
+                    <td (click)="pushTrendView(item)">
+                      <span style="text-decoration: none ; cursor:pointer ;color:green" >{{item.KPIName}}</span>
+                    </td>
+                    <td>{{item.Manager}}</td>
+                    <td>{{item.Owner}}</td>
+                    <td>{{item.Updater}}</td>
+                    <ng-container *ngIf="item.Unit === 'Percentage'; else elseTemplate">
+                      <td style="background-color: yellow" class="datasetTd text-center active-tdtarget">{{item.Target2 + '%'}}</td>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                      <td style="background-color: yellow" class="datasetTd text-center active-tdtarget">{{item.Target2 }}</td>
+
+                    </ng-template>
+
+                    <ng-container *ngIf="item.Unit === 'Percentage'; else elseTemplate1">
+                      <td style="background-color: yellow" class="datasetTd text-center active-tdtarget">{{item.Target + '%'}}</td>
+                    </ng-container>
+                    <ng-template #elseTemplate1>
+                      <td style="background-color: yellow" class="datasetTd text-center active-tdtarget">{{item.Target }}</td>
+                    </ng-template>
+
+                    <td *ngFor="let item2 of item.Datasets"
+                      [class]="checktarget(item,item2)"
+                      >
+                      <ng-container *ngIf="item.Unit === 'Percentage'; else elseTemplate">
+                        <span> {{item2.Value == 0 ? "N/A" : item2.Value + '%'}} </span>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <span> {{item2.Value }} </span>
+                      </ng-template>
+                    </td>
+                  </ng-container>
+
+
+                </tr>
+              </table>
+            </div>
+            <hr>
+          </ng-container>
+
+
+        </div>
+
+        <div *ngIf="isYear === true && isHalf == false"  >
+          <ng-container *ngFor="let items of data">
+            <div class="cart">
+              <div class="card-header">
+                <span style="color: red">{{items.Area}}</span>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0 tableFixHead" style="height: 500px">
+              <table border="1" class="table table-head-fixed table-bordered text-nowrap" >
+                <tr>
+                  <th>No.</th>
+                  <th>Kind</th>
+                  <th>KPI</th>
+                  <th>Manager</th>
+                  <th>Owner</th>
+                  <th>Updater</th>
+                  <th *ngFor="let item of title" class="text-center">{{item}}</th>
+                </tr>
+                <tr *ngFor="let item of items.Data; let i=index">
+                  <ng-container *ngIf="item.Datasets.length >= 0">
+                    <td>{{i+1}}</td>
+                    <td>{{item.CategoryCode}}</td>
+                    <td (click)="pushTrendView(item)">
+                      <span style="text-decoration: none ; cursor:pointer ;color:green" >{{item.KPIName}}</span>
+                    </td>
+                    <td>{{item.Manager}}</td>
+                    <td>{{item.Owner}}</td>
+                    <td>{{item.Updater}}</td>
+
+                    <td *ngFor="let item2 of item.Datasets"
+                      [class]="checktarget(item,item2)"
+                      >
+                      <ng-container *ngIf="item.Unit == 'Percentage'; else elseTemplate">
+                        <span> {{item2.Value == 0 ? "N/A" : item2.Value + '%'}} </span>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <span> {{item2.Value }} </span>
+                      </ng-template>
+
+                    </td>
+                  </ng-container>
+
+                </tr>
+              </table>
+            </div>
+            <hr>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,246 @@
+<!-- <section class="content">
+  <div class="container-fluid">
+  </div>
+</section> -->
+<div class="row" >
+
+  <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+    <span _ngcontent-bwi-c334="" class="text-danger font-weight-bold" style="font-size: 18px;">
+      Please use <b style=" font-weight: bold;">SUPER ADMIN</b>  account when you would like to modify or delete these KPI
+    </span>
+  </marquee>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-4">
+            <h3 class="card-title">List KPIs</h3>
+          </div>
+          <div class="col-md-4">
+
+          </div>
+          <div class="col-md-4">
+            <button (click)="openAddOC(addKPI)" class="btn btn-success float-right">
+              <i class="fa fa-plus"></i> {{'Add_btn' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <ejs-grid #grid  [allowResizing]='true'
+        [gridLines]="lines" [searchSettings]="searchSettings"
+        (actionComplete)="actionComplete($event)"
+        (dataStateChange)='dataStateChange($event)'
+        [toolbar]='toolbarOptions' [dataSource]='data'
+        allowPaging='true' [pageSettings]='pageSettings'
+        [editSettings]='editSettings'>
+          <e-columns>
+            <e-column field='Index'  headerText='#' width='80' textAlign='Center' >
+            </e-column>
+            <e-column field='ChineseName' headerText='Chinese Name'  textAlign='Center' >
+            </e-column>
+            <e-column field='EnglishName' headerText='EngLish Name'  textAlign='Center' >
+            </e-column>
+            <e-column field='LocalLanguage' headerText='Local Language Name'  textAlign='Center' >
+            </e-column>
+
+            <e-column headerText='Description' textAlign='Center' >
+              <ng-template #template let-data>
+                <span >{{ data.Description || "N/A"}}</span>
+              </ng-template>
+            </e-column>
+
+            <e-column field='Code' headerText="{{'Code'| translate}}" width='120' textAlign='Center' ></e-column>
+            <e-column field='Unit' headerText="{{'Units'| translate}}" textAlign='Center' width='150'  >
+            </e-column>
+            <e-column field='Status' headerText='KPI Scores' textAlign='Center' width='150'  >
+
+              <ng-template #template let-data>
+                <ng-container *ngIf="data.Status === true; else elseTemplate">
+                  <span>Lower is better</span>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <span>Higher is better</span>
+                </ng-template>
+              </ng-template>
+
+            </e-column>
+            <e-column field='' headerText='Created By' textAlign='Center' width='150'  >
+
+              <ng-template #template let-data>
+                <span class="badge badge-pill badge-danger">{{data.CreatedBy}}</span>
+              </ng-template>
+
+            </e-column>
+            <e-column field='KPI_Kind_Name' headerText='KPI Kind' textAlign='Center' > </e-column>
+
+            <e-column headerText='Manage Records'  textAlign='Center' width='150'   >
+              <ng-template #template let-data>
+                <button (click)="EditKPI(data.ID,Edit)" ejs-button iconCss='e-icons e-edit' cssClass= 'e-outline'></button>
+                |
+                <button (click)="Delete(data.ID)" ejs-button iconCss='e-icons e-delete' cssClass= 'e-outline'></button>
+              </ng-template>
+            </e-column>
+          </e-columns>
+        </ejs-grid>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #addKPI let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Add KPI
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">Chinese Name</label>
+            <span style="color:red">(*)</span>
+            <input [(ngModel)]="kpi.NameTW" name="NameTW" type="text"  class="form-control Name" />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">English Name</label>
+            <span style="color:red">(*)</span>
+            <input [(ngModel)]="kpi.NameEn" name="NameEn" type="text"  class="form-control Name" />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">Vietnamese Name</label>
+            <span style="color:red">(*)</span>
+            <input [(ngModel)]="kpi.NameVI" name="NameVI" type="text"  class="form-control Name" />
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Unit</label>
+            <span style="color:red">(*)</span>
+            <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" [(ngModel)]="kpi.Unit" name="Unit" aria-hidden="true">
+              <option *ngFor="let item of dataUnit; let i=index"  [label]="item.Name" [ngValue]="item.ID"></option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>KPI Kinds</label>
+            <span style="color:red">(*)</span>
+            <select [(ngModel)]="kpi.KPI_Kind_ID" class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" >
+              <option *ngFor="let item of dataKind; let i=index" [label]="item.Name" [ngValue]="item.ID" ></option>
+            </select>
+            <!-- <input [(ngModel)]="Level" name="Level" type="text"  class="form-control Name" /> -->
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>KPI Scores</label>
+            <span style="color:red">(*)</span>
+            <select [(ngModel)]="over" class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1"  name="Unit" aria-hidden="true">
+              <option value="1" selected>Lower is better</option>
+              <option value="0">Higher is better</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <span style="color:red">(*)</span>
+            <textarea class="form-control" [(ngModel)]="kpi.Description"  placeholder="Enter content" rows="5"></textarea>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="save()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+
+  <ng-template #Edit let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Edit KPI
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">Chinese Name</label>
+            <span style="color:red">(*)</span>
+            <input [(ngModel)]="NameTWEdit" name="NameTWEdit" type="text"  class="form-control Name" />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">English Name</label>
+            <span style="color:red">(*)</span>
+            <input [(ngModel)]="NameEnEdit" name="NameEnEdit" type="text"  class="form-control Name" />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="Name">Vietnamese Name</label>
+            <span style="color:red">(*)</span>
+            <input [(ngModel)]="NameVIEdit" name="NameVIEdit" type="text"  class="form-control Name" />
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Unit</label>
+            <span style="color:red">(*)</span>
+            <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" [(ngModel)]="UnitEdit" name="Unit" aria-hidden="true">
+              <option *ngFor="let item of dataUnit; let i=index"  [label]="item.Name" [ngValue]="item.ID"></option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>KPI Kinds</label>
+            <span style="color:red">(*)</span>
+            <select [(ngModel)]="KindEdit" class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true" >
+              <option *ngFor="let item of dataKind; let i=index" [label]="item.Name" [ngValue]="item.ID" ></option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <span style="color:red">(*)</span>
+            <textarea class="form-control" [(ngModel)]="DescriptionEdit" placeholder="Enter content" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>KPI Scores</label>
+          <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" [(ngModel)]="overEdit" aria-hidden="true">
+            <option value="1">Lower is better</option>
+            <option value="0">Higher is better</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="update()" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+
+</div>

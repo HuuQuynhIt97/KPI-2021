@@ -1,0 +1,52 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="car">
+      <div class="cart-header">
+        <button (click)="reload()" class="btn btn-primary">Refresh Page</button>
+      </div>
+      <hr>
+      <!-- (queryCellInfo)='tooltip($event)'  -->
+      <div class="cart-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table width='100%'>
+              <tr>
+
+                <!-- Eng -->
+                <td>
+                  <ejs-grid #gridEn (actionBegin)="actionBeginEn($event)" [toolbar]='toolbarOptions' [pageSettings]='pageSettings' [allowResizing]='true' [searchSettings]="searchSettings"  [dataSource]='dataEn' allowPaging='true'  [editSettings]='editSettings'>
+                    <e-columns>
+                      <e-column field='valueEn' headerText='English Language'  textAlign='Left' ></e-column>
+                    </e-columns>
+                  </ejs-grid>
+                </td>
+                <!-- end Eng -->
+
+                <!-- Chinese -->
+                <td>
+                  <ejs-grid #gridTw (actionBegin)="actionBeginTw($event)" [toolbar]='toolbarOptions' [pageSettings]='pageSettings' [allowResizing]='true' [searchSettings]="searchSettings"    [dataSource]='dataTw' allowPaging='true'  [editSettings]='editSettings'>
+                    <e-columns>
+                      <e-column field='valueTw' headerText='Chinese Language'  textAlign='Left' ></e-column>
+                    </e-columns>
+                  </ejs-grid>
+                </td>
+                <!-- end Chinese -->
+
+                <!-- Local -->
+                <td>
+                  <ejs-grid #gridVi (actionBegin)="actionBeginLocal($event)" [toolbar]='toolbarOptions' [pageSettings]='pageSettings'  [allowResizing]='true' [searchSettings]="searchSettings"   [dataSource]='dataVi' allowPaging='true'  [editSettings]='editSettings'>
+                    <e-columns>
+                      <e-column field='valueVi' headerText='Local Language'  textAlign='Left' ></e-column>
+                    </e-columns>
+                  </ejs-grid>
+                </td>
+                <!-- end Local -->
+
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

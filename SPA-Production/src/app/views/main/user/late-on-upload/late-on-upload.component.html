@@ -1,0 +1,33 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">List Tasks</h5>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fa fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div  class="card-body table-responsive p-0">
+          <ejs-grid #grid [searchSettings]="searchSettings"  [toolbar]='toolbarOptions' [dataSource]='data' [allowPaging]='true' [pageSettings]='pageSettings' [editSettings]='editSettings'>
+            <e-columns>
+              <e-column field='ID' headerText='#' width='70' textAlign='Left' isPrimaryKey='true' >
+                <ng-template #template let-data>
+                  {{data.index}}
+                </ng-template>
+              </e-column>
+              <e-column field='Area' headerText='OC' width='200' textAlign='Center' ></e-column>
+              <e-column field='DeadLine' headerText='DeadLine' width='120' textAlign='Center' ></e-column>
+              <e-column field='KPIName' headerText='KPI Name' width='120' textAlign='Center' ></e-column>
+              <e-column field='Code' headerText='Code' width='120' textAlign='Center' ></e-column>
+              <e-column field='Year' headerText='Year' width='120' textAlign='Center' ></e-column>
+
+            </e-columns>
+          </ejs-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

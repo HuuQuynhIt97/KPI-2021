@@ -1,0 +1,234 @@
+<!-- <section class="content">
+  <div class="container-fluid">
+  </div>
+</section> -->
+<div class="row">
+
+  <div class="col-md-12">
+    <div class="callout bg-yellow-gradient" style="border-color:#c57901; background-color: #1b945c; color: white;">
+      <h3>7. OC Category KPI</h3>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Organization Chart</h5>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="card-body table-responsive p-0">
+        <ejs-treegrid
+        #treegrid
+        [dataSource]="data"
+        childMapping="children"
+        [treeColumnIndex]="1"
+        [allowPaging]="true"
+        [pageSettings]="pageSettings"
+        [allowExcelExport]="true"
+        [allowPdfExport]="true"
+        [allowSorting]="true"
+        [editSettings]="editing"
+        (rowSelected)="rowSelected($event)"
+        [searchSettings]="searchSettings"
+        [toolbar]="toolbar" >
+          <e-columns>
+            <e-column field="levelnumber" width="100" isPrimaryKey="true" headerText="Level" [disableHtmlEncode]="false">
+            </e-column>
+            <e-column field="title" editType="stringedit" headerText="OC Name" [edit]="editparams" [disableHtmlEncode]="false">
+              <ng-template #template let-data>
+                {{data.title}}
+              </ng-template>
+            </e-column>
+          </e-columns>
+        </ejs-treegrid>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Category lists {{title}}</h5>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="isHide" class="card-body table-responsive p-0">
+        <ejs-grid  #grid [searchSettings]="searchSettings" (rowSelected)="rowSelected2($event)"  [toolbar]='toolbarOptions' [dataSource]='data2' allowPaging='true' [pageSettings]='pageSettings2' >
+          <e-columns>
+            <e-column headerText='#' width='80' textAlign='Left' isPrimaryKey='true'>
+              <ng-template #template let-data>
+                <span>{{NO(data)}}</span>
+              </ng-template>
+
+            </e-column>
+            <e-column field='Name' headerText='Category Name' width='150' textAlign='Left' >
+            </e-column>
+            <e-column field='LevelID' headerText='Level Number' width='120' textAlign='Center' ></e-column>
+          </e-columns>
+        </ejs-grid>
+      </div>
+    </div>
+    <div *ngIf="ocHide" class="card">
+      <div class="card-header">
+        <h5 class="card-title">OC {{titleoc}}</h5>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body table-responsive p-0">
+        <ejs-grid  #grid [allowResizing]='true' gridLines="Both"  [searchSettings]="searchSettings"  [toolbar]='toolbarOptions' [dataSource]='data3' allowPaging='true' [pageSettings]='pageSettings2' >
+          <e-columns>
+
+            <e-column field='ID' headerText='#' width='30' textAlign='Left' isPrimaryKey='true'>
+              <ng-template #template let-data>
+                <span>{{NO(data)}}</span>
+              </ng-template>
+            </e-column>
+            <e-column field='' headerText='Modify' width='100' textAlign='Center' >
+              <ng-template #template let-data>
+                <ng-container *ngIf="data.CheckCategory === true; else elseTemplate">
+                  <button (click)="modify(data,showdata)" ejs-button iconCss='e-icons e-update' cssClass= 'e-outline'></button>
+                </ng-container>
+                <ng-template #elseTemplate>
+                </ng-template>
+              </ng-template>
+            </e-column>
+            <e-column width='160' headerText='Modified By' textAlign='Center' >
+              <ng-template #template let-data>
+                <ng-container *ngIf="data.CheckCategory; else elseTemplate">
+                  <span class="badge badge-pill badge-dark"> {{ data.ModifyBy || "#N/A"}}</span>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <span class="badge badge-pill badge-dark"> {{ "#N/A"}}</span>
+                </ng-template>
+
+              </ng-template>
+            </e-column>
+            <e-column width='60'>
+              <ng-template #template let-data>
+                <ejs-switch (click)="addMember(data,member)" cssClass="e-success"  #wswitch [(checked)]="data.CheckCategory" ></ejs-switch>
+              </ng-template>
+            </e-column>
+            <e-column field='KPIName' headerText='KPI Organization Chart' width='200' textAlign='Left' >
+            </e-column>
+            <e-column field='' headerText='Period' width='600' textAlign='Center' >
+              <ng-template #template let-data>
+                <button [disabled]="auditPeriodAttr(data.Checked,data.WeeklyChecked,data.StatusUploadDataW,data.StatusEmptyDataW)" [ngClass]="auditPeriodClass( data.Checked, data.WeeklyChecked, data.StatusUploadDataW, data.StatusEmptyDataW)" type="button" style="margin: 3px;" ><i class="fas fa-chart-bar"></i>Weekly</button>
+                <button [disabled]="auditPeriodAttr(data.Checked,data.MonthlyChecked,data.StatusUploadDataM,data.StatusEmptyDataM)" [ngClass]="auditPeriodClass(data.Checked,data.MonthlyChecked,data.StatusUploadDataM,data.StatusEmptyDataM)" type="button" style="margin: 3px;" ><i class="fas fa-chart-bar"></i>Monthly</button>
+                <button [disabled]="auditPeriodAttr(data.Checked,data.HalfYearChecked,data.StatusUploadDataH,data.StatusEmptyDataH)" [ngClass]="auditPeriodClass(data.Checked,data.HalfYearChecked,data.StatusUploadDataH,data.StatusEmptyDataH)" type="button" style="margin: 3px;" ><i class="fas fa-chart-bar"></i>Half Year</button>
+                <button [disabled]="auditPeriodAttr(data.Checked,data.WeeklyChecked,data.StatusUploadDataQ,data.StatusEmptyDataQ)" [ngClass]="auditPeriodClass(data.Checked,data.QuarterlyChecked,data.StatusUploadDataQ,data.StatusEmptyDataQ)" type="button" style="margin: 3px;" ><i class="fas fa-chart-bar"></i>Quarterly</button>
+                <button [disabled]="auditPeriodAttr(data.Checked,data.WeeklyChecked,data.StatusUploadDataY,data.StatusEmptyDataY)" [ngClass]="auditPeriodClass(data.Checked,data.YearlyChecked,data.StatusUploadDataY,data.StatusEmptyDataY)" type="button" style="margin: 3px;" ><i class="fas fa-chart-bar"></i>Yearly</button>
+              </ng-template>
+            </e-column>
+
+          </e-columns>
+        </ejs-grid>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #member let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Add Member
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="box-body">
+
+          <div class="form-group">
+            <label for="weekly">Manager </label>
+            <span style="color:red">(*)</span>
+            <ejs-multiselect [fields]='fields' #sample  (change)='onChange($event)' [allowCustomValue]=true [mode]='box' [(value)]='manager' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+          <div class="form-group">
+            <label for="weekly">Owner </label>
+            <span style="color:red">(*)</span>
+            <ejs-multiselect [fields]='fields' (change)='onChange($event)' [allowCustomValue]=true [mode]='box' [(value)]='owner' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+          <div class="form-group">
+            <label for="weekly">Updater </label>
+            <span style="color:red">(*)</span>
+            <ejs-multiselect [fields]='fields' (change)='onChange($event)' [allowCustomValue]=true [mode]='box' [(value)]='updater' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+          <div class="form-group">
+            <label for="weekly">Sponsor </label>
+            <ejs-multiselect [fields]='fields' (change)='onChange($event)' [allowCustomValue]=true [mode]='box' [(value)]='sponsor' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+          <div class="form-group">
+            <label for="weekly">Participant </label>
+            <ejs-multiselect [fields]='fields' (change)='onChange($event)' [allowCustomValue]=true [mode]='box' [(value)]='participant' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveMember()"  class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+
+  <ng-template #showdata let-modal>
+
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-plus"></i> Add Member
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="box-body">
+
+          <div class="form-group">
+            <label for="weekly">Manager </label>
+            <span style="color:red">(*)</span>
+            <ejs-multiselect [fields]='fields' #sample  [allowCustomValue]=true [mode]='box' (change)='onChange($event)' [(value)]='manager' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+          <div class="form-group">
+            <label for="weekly">Owner </label>
+            <span style="color:red">(*)</span>
+            <ejs-multiselect [fields]='fields' [allowCustomValue]=true [mode]='box' (change)='onChange($event)' [(value)]='owner' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+          <div class="form-group">
+            <label for="weekly">Updater </label>
+            <span style="color:red">(*)</span>
+            <ejs-multiselect [fields]='fields' [allowCustomValue]=true [mode]='box' (change)='onChange($event)' [(value)]='updater' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+          <div class="form-group">
+            <label for="weekly">Sponsor </label>
+            <ejs-multiselect [fields]='fields' [allowCustomValue]=true [mode]='box' (change)='onChange($event)' [(value)]='sponsor' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+
+          <div class="form-group">
+            <label for="weekly">Participant </label>
+            <ejs-multiselect [fields]='fields' [allowCustomValue]=true [mode]='box' (change)='onChange($event)' [(value)]='participant' id='multiselectelement' [dataSource]='dataUser' [placeholder]='placeholder'></ejs-multiselect>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="submit" (click)="saveMember()"  class="btn btn-primary">Save changes</button>
+    </div>
+
+  </ng-template>
+
+</div>

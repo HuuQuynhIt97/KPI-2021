@@ -1,0 +1,394 @@
+<section class="content">
+
+  <div class="col-md-12">
+    <div class="box boxDataset boxdataset-scrollbar">
+      <div class="box-header">
+        <blockquote>
+          <h3 *ngIf="period == 'w'" class="box-title" style="font-weight:bold">Category - {{categoryname}} - Weekly</h3>
+          <h3 *ngIf="period == 'm'" class="box-title" style="font-weight:bold">Category - {{categoryname}} - Monthly</h3>
+          <h3 *ngIf="period == 'q'" class="box-title" style="font-weight:bold">Category - {{categoryname}} - Quarterly</h3>
+          <h3 *ngIf="period == 'y'" class="box-title" style="font-weight:bold">Category - {{categoryname}} - Yearly</h3>
+        </blockquote>
+
+      </div>
+      <div class="box-body ">
+        <div class="col-md-12">
+
+          <div class="form-inline" *ngIf="period ==  'm'"   id="searchMonth">
+
+            <label class="my-1 mr-2" for="startMonth">Year</label>
+
+            <select [(ngModel)]="year" (change)='vyear($event)' class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+              <option value="0" selected>Choose...</option>
+
+              <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+            </select>
+
+            <label class="my-1 mr-2" for="startMonth">Start Month</label>
+
+            <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control my-1 mr-sm-2" id="startMonth">
+              <option value="0" >Choose...</option>
+              <option value="1" >Jan</option>
+              <option value="2">Feb</option>
+              <option value="3">Mar</option>
+              <option value="4">Apr</option>
+              <option value="5">May</option>
+              <option value="6">Jun</option>
+              <option value="7">Jul</option>
+              <option value="8">Aug</option>
+              <option value="9">Sep</option>
+              <option value="10">Oct</option>
+              <option value="11">Nov</option>
+              <option value="12">Dec</option>
+            </select>
+
+            <label class="my-1 mr-2" for="endMonth">End Month</label>
+
+            <select [(ngModel)]="end" (change)="vend($event)" class="custom-select form-control my-1 mr-sm-2" id="endMonth">
+              <option value="0" >Choose...</option>
+              <option value="1">Jan</option>
+              <option value="2">Feb</option>
+              <option value="3">Mar</option>
+              <option value="4">Apr</option>
+              <option value="5">May</option>
+              <option value="6">Jun</option>
+              <option value="7">Jul</option>
+              <option value="8">Aug</option>
+              <option value="9">Sep</option>
+              <option value="10">Oct</option>
+              <option value="11">Nov</option>
+              <option value="12" >Dec</option>
+            </select>
+            <button type="button" class="btn bg-teal margin btnClearSearch">
+              <i class="fa fa-remove"></i> Reset search
+            </button>
+          </div>
+
+          <div class="form-inline" *ngIf="period ==  'w'"   id="searchWeek">
+              <label class="my-1 mr-2" for="startMonth">Year</label>
+              <select [(ngModel)]="year" (change)='vyear($event)' class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                  <option value="0" selected>Choose...</option>
+
+                  <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+              </select>
+
+              <label class="my-1 mr-2" for="startWeek">Week Start</label>
+              <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control my-1 mr-sm-2" id="startWeek">
+                  <option value="0" >Choose...</option>
+
+                  <option *ngFor="let n of counter(53); let i=index"  [value]="i+1">Week {{i+1}}</option>
+              </select>
+
+              <label class="my-1 mr-2" for="endWeek">Week End</label>
+              <select [(ngModel)]="end" (change)="vend($event)" class="custom-select form-control my-1 mr-sm-2" id="endWeek">
+                  <option value="0" selected>Choose...</option>
+
+                  <option *ngFor="let n of counter(53); let i=index"  [value]="i+1">Week {{i+1}}</option>
+              </select>
+
+              <button type="button" class="btn bg-teal margin btnClearSearch">
+              <i class="fa fa-remove"></i> Reset search
+              </button>
+          </div>
+
+          <div class="form-inline" *ngIf="period ==  'q'"   id="searchQuarter">
+              <label class="my-1 mr-2" for="startMonth">Year</label>
+
+              <select [(ngModel)]="year" (change)='vyear($event)' class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                  <option value="0" selected>Choose...</option>
+
+                  <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+              </select>
+
+              <label class="my-1 mr-2" for="startMonth">Start</label>
+
+              <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control my-1 mr-sm-2" id="startQuarter">
+                  <option value="0" selected>Choose...</option>
+                  <option *ngFor="let n of counter(4); let i=index"  [value]="i+1">Quarter {{i+1}}</option>
+              </select>
+
+              <label class="my-1 mr-2" for="endMonth">End</label>
+
+              <select  [(ngModel)]="end" (change)="vend($event)" class="custom-select form-control my-1 mr-sm-2" id="endQuarter">
+                  <option value="0" selected>Choose...</option>
+                  <option *ngFor="let n of counter(4); let i=index"  [value]="i+1">Quarter {{i+1}}</option>
+              </select>
+              <button type="button" class="btn bg-teal margin btnClearSearch">
+              <i class="fa fa-remove"></i> Reset search
+              </button>
+          </div>
+
+          <div class="form-inline" *ngIf="period ==  'y'"   id="searchYear">
+              <label class="my-1 mr-2" for="YearOfYear">Year</label>
+
+              <select [(ngModel)]="year" (change)='vyear($event)' class="custom-select form-control year my-1 mr-sm-2" id="weekOfYear">
+                  <option value="0" selected>Choose...</option>
+
+                  <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+              </select>
+
+              <label class="my-1 mr-2" for="startMonth">Start</label>
+
+              <select [(ngModel)]="start" (change)="vstart($event)" class="custom-select form-control my-1 mr-sm-2" id="startYear">
+                  <option value="0" selected>Choose...</option>
+
+                  <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+              </select>
+              <label class="my-1 mr-2" for="endMonth">End</label>
+
+              <select [(ngModel)]="end" (change)="vend($event)" class="custom-select form-control my-1 mr-sm-2" id="endYear">
+                  <option value="0" selected>Choose...</option>
+
+                  <option *ngFor="let n of counter(100);let i= index" [value]="2000 + (i+1)">  {{2000 + (i+1)}}</option>
+              </select>
+              <button type="button" class="btn bg-teal margin btnClearSearch">
+              <i class="fa fa-remove"></i> Reset search
+              </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="box-body table-responsive no-padding" id="tblDataset">
+          <div class="col-md-12">
+              <table class="table">
+                  <thead>
+                      <th class="text-center">KPI</th>
+                      <th *ngFor="let item of title; let i=index"  class="text-center">{{item}}</th>
+                  </thead>
+                  <tbody *ngFor="let item of data; let i=index">
+                      <tr *ngIf="item.Datasets.length > 0 " class="warning">
+                          <td class="text-center">
+                              <div class="tooltip-css">
+                                  {{item.KPIName}}
+                                  <div class="right">
+                                      <h4>Category: {{item.CategoryName}}</h4>
+                                      <p>Manager: {{item.Manager}}</p>
+                                      <p>Owner: {{item.Owner}}</p>
+                                      <p>Updater: {{item.Updater}}</p>
+                                      <p>Sponsor: {{item.Sponsor}}</p>
+                                      <p>Participant: {{item.Participant}}</p>
+                                      <i></i>
+                                  </div>
+                              </div>
+
+                          </td>
+                          <td *ngFor="let item2 of item.Datasets; let i=index" (click)="openComment($event,item2,comment)"  [ngClass]="item2.ValueArray[1] === 'True' ? 'datasetTd text-center active-td2'  : 'datasetTd text-center active-td'">
+                              <div class="tooltip-css" style="text-align: center;">
+                                  {{item2.ValueArray[0] == 0 ? "N/A" : item2.ValueArray[0]}}
+                                  <div class="top">
+                                      <p>{{item.CategoryName}}</p>
+                                      <p>{{item.Period.substring(0, item.Period.length - 2)}} : {{item2.Week}}</p>
+                                      <p>Target : {{item2.ValueArray[2] || "#N/A"}}</p>
+                                      <i></i>
+                                  </div>
+                              </div>
+
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #comment let-modal>
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <i class="fa fa-tags"></i>&#32;
+        <span class="RemarkChart"> {{remarkText}}</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modalclose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row bootstrap snippets">
+        <div class="col-md-12 col-sm-12">
+          <div class="comment-wrapper">
+            <div class="panel panel-info">
+              <div class="panel-body">
+
+                <div class="form-group">
+                  <textarea [(ngModel)]="content" name="content" [mention]="dataUser" [mentionConfig]="{triggerChar:'@',labelKey:'Username'}" class="form-control" id="comment" placeholder="write a comment..." rows="6"></textarea>
+                </div>
+
+                <button (click)="addcomment()" type="button" class="btn btn-info float-right ">
+                  <i class="far fa-paper-plane"></i> Post
+                </button>
+
+                <br>
+                <hr>
+                <br>
+
+                <ul class="media-list" id="media-list">
+                  <li *ngFor="let item of dataComment; let i=index" class="media">
+                    <a class="float-left">
+                      <img src="../../../assets/image/user-icon.png" alt="" class="img-circle">
+                    </a>
+                    <div class="media-body">
+                      <span class="text-muted float-right "  style="padding-left: 13px; cursor: pointer" >
+                      <p (click)="DeleteComment(item.CommentID)" class="text-danger"> <i class="fas fa-times"></i> Delete</p>
+                      </span>
+                      <strong class="text-success">{{item.FullName}}</strong>
+                      <span class="text-muted float-right">
+                      <small class="text-muted">{{item.CommentedDate | date:'HH:mm a - dd/MM/yyy'}}</small>
+                      </span>
+                      <span *ngIf="item.Read" class="badge bg-green"> new</span>
+                      <ng-container *ngIf="item.Task; else elseTemplate">
+                        <p><a  (click)="openActionPlan(item,actionplan)" data-toggle="modal"  data-dismiss="modal" class="btn btn-sm btn-danger text-bold btnTask"><i class="fa fa-tags"></i> Task</a> </p>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <p><a (click)="openActionPlan(item,actionplan)"  data-toggle="modal" title="There are no task."  data-dismiss="modal" class="btn btn-sm btn-success text-bold btnTask tooltip-ui"><i class="fa fa-tags"></i> Task</a> </p>
+                      </ng-template>
+                      <p>{{item.CommentMsg}}</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modalclose()">Close</button>
+    </div>
+  </ng-template>
+
+
+  <ng-template #actionplan let-modal>
+
+    <div class="modal-header" style="background-color:#00a65a;color:#fff">
+      <h4 class="modal-title">
+        <a (click)="backComment(comment)" ref="comment" data-toggle="modal" data-dismiss="modal" style="color:#fff;cursor:pointer" >
+        <i class="fa fa-reply"></i>
+        </a>&#32;
+        <span class="RemarkChart"> {{actionPlanText}}</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modalclose2()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ejs-tab id="element">
+        <e-tabitems>
+          <e-tabitem>
+            <ng-template #headerText>
+              <div> List </div>
+            </ng-template>
+            <ng-template #content>
+              <ejs-grid #grid  [searchSettings]="searchSettings" (actionBegin)='actionBegin($event)'  [toolbar]='toolbarOptions' [dataSource]='dataActionPlan' allowPaging='true' [pageSettings]='pageSettings' [editSettings]='editSettings'>
+                <e-columns >
+                  <e-column field='' headerText='#' width='70' textAlign='Left' isPrimaryKey='true' >
+                    <ng-template #template let-data>
+                      {{data.index}}
+                    </ng-template>
+                  </e-column>
+                  <e-column field='ID' isPrimaryKey='true' headerText='Task ID' width='120' textAlign='Left' >
+                  </e-column>
+                  <e-column field='Title' headerText='Task name' [edit]="editparams"  width='200' textAlign='Center' >
+
+                  </e-column>
+                  <e-column field='Description' headerText='Descriptions' [edit]="editparams" editType='Description' width='120'  textAlign='Center' >
+                    <ng-template #template let-data>
+                      {{data.Description}}
+                    </ng-template>
+                  </e-column>
+                  <e-column field='Tag' isPrimaryKey='true' headerText='PIC' width='120' textAlign='Center'  ></e-column>
+                  <e-column field='Deadline' headerText='Due date' width='250'  textAlign='Center' >
+                    <ng-template #editTemplate let-data>
+                      <ejs-datepicker format='MM-dd-yyyy' placeholder="Order Date"
+                      [(ngModel)]="data.Deadline" (change)='DeadlineChange($event)' floatLabelType='Never'></ejs-datepicker>
+                    </ng-template>
+                  </e-column>
+                  <e-column field='UpdateSheduleDate' headerText='Update shedule date' width='250' textAlign='Center'  >
+                    <ng-template #editTemplate let-data>
+                      <ejs-datepicker format='MM-dd-yyyy' placeholder="Order Date"
+                      [(ngModel)]="data.UpdateSheduleDate" (change)='DeadlineUpdateChange($event)' floatLabelType='Never'></ejs-datepicker>
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field='ActualFinishDate' headerText='Actual finish date' isPrimaryKey='true'  width='250' textAlign='Center'  ></e-column>
+                  <e-column field='Remark'  headerText='Remark' width='250' textAlign='Center'  >
+                    <ng-template #template let-data>
+                      {{data.Remark || '#N/A'}}
+                    </ng-template>
+                  </e-column>
+                  <e-column  isPrimaryKey='true' headerText='Status' width='200' textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ejs-switch (click)="done(data)"   onLabel="ON" offLabel="OFF" [disabled]='data.ListUserIDs.indexOf(userid) != -1 && data.ApprovedStatus == false ?"":"true"'   #wswitch [(checked)]="data.Status" ></ejs-switch>
+                    </ng-template>
+
+                  </e-column>
+                  <e-column  isPrimaryKey='true' headerText='Approve' width='200' textAlign='Center' >
+                    <ng-template #template let-data>
+                      <ejs-switch (click)="approval(data)"  onLabel="ON" offLabel="OFF" [disabled]='data.CreatedBy == userid || data.Auditor == userid ?"":"true"'  #wswitch [(checked)]="data.ApprovedStatus" ></ejs-switch>
+                    </ng-template>
+                  </e-column>
+                  <e-column field='Option' isPrimaryKey='true' headerText='Option' width='120' textAlign='Center' >
+                    <ng-template #template let-data>
+                      <button (click)="deleteActionPlan(data.ID)"  [disabled] = 'data.CreatedBy == userid || data.Auditor == userid || data.ListAuditorIDs.indexOf(userid) != -1 ?"" :"true"' ejs-button iconCss='e-icons e-delete' cssClass= 'e-flat'></button>
+                    </ng-template>
+                  </e-column>
+                </e-columns>
+              </ejs-grid>
+            </ng-template>
+          </e-tabitem>
+
+          <e-tabitem>
+
+            <ng-template #headerText>
+              <div> Add </div>
+            </ng-template>
+            <ng-template #content>
+              <div class="addTask">
+
+                <div class="form-group">
+                  <label>Task name<b class="text-danger"> (*) </b></label>
+                  <input [(ngModel)]="taskname" type="text" class="form-control Title" autocomplete="off" placeholder="">
+                </div>
+
+                <div class="form-group">
+                  <label>Description<b class="text-danger"> (*) </b></label>
+                  <textarea [(ngModel)]="description" type="text" class="form-control Description" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group" tooltip-position="top" data-c-tooltip='Enter a character "@@" inside the textarea and you will see the dropdown list populated with suggestions.'>
+                  <label class="control-label" for="Tag">Assign PIC<b class="text-danger"> (*) </b></label>
+                  <textarea [(ngModel)]="AssignPIC" name="content" [mention]="dataUser" [mentionConfig]="{triggerChar:'@',labelKey:'Username',allowSpace:true}" type="text" class="form-control Tag" id="Tag" rows="1" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group" tooltip-position="top" data-c-tooltip='Enter a character "@@" inside the textarea and you will see the dropdown list populated with suggestions.'>
+                  <label class="control-label" for="Auditor">Auditor<b class="text-danger"> (*) </b></label>
+                  <textarea [(ngModel)]="Auditor" name="content" [mention]="dataUser" [mentionConfig]="{triggerChar:'@',labelKey:'Username',allowSpace:true}" type="text" class="form-control Auditor" id="Auditor" rows="1" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>Due date<b class="text-danger"> (*) </b></label><br>
+                  <ejs-datepicker (change)='onChange($event,dateValue)' width="500" [(ngModel)]="dateValue" format='MM-dd-yyyy' placeholder='Enter date' [value]=dateValue></ejs-datepicker>
+                </div>
+
+                <button type="button" (click)="addActionPlan(actionplan)" class="btn btn-success ">Save</button>
+                <div class="form-group">
+                  <b class="text-danger">(*) Require fields not to be blank. </b>
+                </div>
+
+              </div>
+            </ng-template>
+
+          </e-tabitem>
+
+        </e-tabitems>
+      </ejs-tab>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modalclose2()">Close</button>
+      <button type="submit" (click)="backComment(comment)" class="btn btn-primary">Back to remark</button>
+    </div>
+
+  </ng-template>
+
+</section>
