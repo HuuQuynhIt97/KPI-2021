@@ -262,6 +262,7 @@ export class OverviewComponent implements OnInit {
 
   pushTrendView(item) {
     const pr = this.convertPeriodPush(this.periodDefault, true);
+    //window.open(`#/KPITrendView/${item.KPILevelCode}/${item.CategoryID}/${pr}/${this.year}/1/${this.end}`,'_blank')
     return this.router.navigate([
       `/KPITrendView/${item.KPILevelCode}/${item.CategoryID}/${pr}/${this.year}/1/${this.end}`,
     ]);

@@ -630,15 +630,15 @@ export class KPITrendViewComponent implements OnInit {
 
   SortActionPlanByPeriod(point) {
     this.kpiTrendViewService
-      .SortActionPlanByPeriod(
-        this.route.snapshot.params.period,
-        point,
-        this.kpilevelID,
-        this.currentUser
-      )
-      .subscribe((res: any) => {
-        this.AllDataActionPlanByKPILevelID = res.data;
-      });
+    .SortActionPlanByPeriod(
+      this.route.snapshot.params.period,
+      point,
+      this.kpilevelID,
+      this.currentUser
+    )
+    .subscribe((res: any) => {
+      this.AllDataActionPlanByKPILevelID = res.data;
+    });
   }
 
   Loadchart() {

@@ -1054,7 +1054,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             var kpiID = _dbContext.KPILevels.FirstOrDefault(x => x.ID == item.KPILevelID).KPIID;
                             var check = _dbContext.KPILevels.FirstOrDefault(x => x.ID == item.KPILevelID).Checked;
                             var kpiname = _dbContext.KPIs.FirstOrDefault(x => x.ID == kpiID).Name;
@@ -1081,7 +1081,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             //if(item.KPILevelID != null)
                             var FindKPIID = _dbContext.KPILevels.Find(item.KPILevelID);
                             //var kpiID = 0;
@@ -1113,7 +1113,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             var FindKPIID = _dbContext.KPILevels.Find(item.KPILevelID);
                             var myList = ListOCs as IEnumerable;
                             foreach (int items in myList)
@@ -1648,7 +1648,7 @@ namespace Service.Implementation
                 List<string> listLabels = new List<string>();
                 var dataremarks = new List<Dataremark>();
                 var listtarget = new List<Dataremark>();
-                var listKPILevelID = await GetAllManagerOwnerUpdaterSponsorParticipant(0);
+                var listKPILevelID = new List<ManagerOwnerUpdaterSponsorParticipantViewModel>() ;
                 var OwnerModelList = _dbContext.Managers.ToList();
                 var OwnerModelSelectCategory = new List<int>();
 
@@ -1693,7 +1693,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             var kpiID = _dbContext.KPILevels.FirstOrDefault(x => x.ID == item.KPILevelID).KPIID;
                             var check = _dbContext.KPILevels.FirstOrDefault(x => x.ID == item.KPILevelID).Checked;
                             var kpiname = _dbContext.KPILangs.FirstOrDefault(x => x.KPIID == kpiID && x.LanguageID == lang).Name;
@@ -1709,9 +1709,9 @@ namespace Service.Implementation
                                 Checked = check,
                                 Code = kpicode,
                                 KPIName = kpiname,
-                                Status = stt,
+                                Status = _dbContext.KPIs.FirstOrDefault(x => x.ID == kpiID).Status,
                                 Unit = _dbContext.Units.FirstOrDefault(x => x.ID == unitname).Name.ToSafetyString(),
-                                KPILevelCode = kpilevelcode
+                                KPILevelCode =  _dbContext.KPILevels.FirstOrDefault(x => x.ID == item.KPILevelID).KPILevelCode
                             });
                         }
                         else
@@ -1723,7 +1723,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             var FindKPIID = _dbContext.KPILevels.Find(item.KPILevelID);
                             if (FindKPIID != null)
                             {
@@ -1759,7 +1759,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             var FindKPIID = _dbContext.KPILevels.Find(item.KPILevelID);
                             var myList = ListOCs as IEnumerable;
                             foreach (int items in myList)
@@ -1905,9 +1905,7 @@ namespace Service.Implementation
                     {
                         var tblCategory = await _dbContext.Categories.FindAsync(itemms.CategoryID);
                         var categorycode = tblCategory.Code;
-
                         var obj = new DataUserViewModel();
-
                         if (categoryid == 0)
                         {
                             var objtamp = await GetAllOwner(itemms.CategoryID, itemms.KPILevelID);
@@ -1918,6 +1916,7 @@ namespace Service.Implementation
                             var objtamp = await GetAllOwner(categoryid, itemms.KPILevelID);
                             obj = objtamp;
                         }
+                        
                         var tbldata = await _dbContext.Datas
                             .Where(x => x.KPILevelCode == itemms.KPILevelCode && x.Period == "M" && x.Yearly == year)
                             .OrderBy(x => x.Month)
@@ -2400,7 +2399,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             var kpiID = _dbContext.KPILevels.FirstOrDefault(x => x.ID == item.KPILevelID).KPIID;
                             var check = _dbContext.KPILevels.FirstOrDefault(x => x.ID == item.KPILevelID).Checked;
                             var kpiname = _dbContext.KPIs.FirstOrDefault(x => x.ID == kpiID).Name;
@@ -2427,7 +2426,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             //if(item.KPILevelID != null)
                             var FindKPIID = _dbContext.KPILevels.Find(item.KPILevelID);
                             //var kpiID = 0;
@@ -2460,7 +2459,7 @@ namespace Service.Implementation
                     {
                         if (categoryid == 0)
                         {
-                            var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
+                            //var listKPILevelID2 = await GetAllManagerOwnerUpdaterSponsorParticipant(item.CategoryID);
                             var FindKPIID = _dbContext.KPILevels.Find(item.KPILevelID);
                             var myList = ListOCs as IEnumerable;
                             foreach (int items in myList)
@@ -2547,8 +2546,7 @@ namespace Service.Implementation
                             Week = x.Week
                         })
                         .ToListAsync();
-                        dataremarks = tbldata
-                                     .Where(a => a.Value.ToDouble() >= 0)
+                        dataremarks = tbldata.Where(a => a.Value.ToDouble() >= 0)
                      .Select(a => new Dataremark
                      {
                          ID = a.ID,
@@ -2621,12 +2619,11 @@ namespace Service.Implementation
                               .OrderBy(x => x.Month)
                               .Select(x => new
                               {
-                                  ID = x.ID,
-                                  Value = x.Value,
-                                  Remark = x.Remark,
-                                  x.Target,
-                                  Month = x.Month,
-
+                                ID = x.ID,
+                                Value = x.Value,
+                                Remark = x.Remark,
+                                x.Target,
+                                Month = x.Month
                               }).ToListAsync();
                         dataremarks = tbldata
                           .Where(a => a.Value.ToDouble() >= 0)

@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
      }
   }
   authentication() {
-    return this.authService
-      .login(this.user).toPromise();
+    return this.authService.login(this.user).toPromise();
   }
+
   async login(){
     // this.spinner.show();
     try {
