@@ -153,16 +153,16 @@ export class WorkplaceComponent implements OnInit {
   }
 
   downloadExcel() {
-    const url = environment.apiExportExcel + this.userid
+    this.spinner.show();
+    const url = environment.apiExportExcel + this.userid + '/' + this.locale
     this.workplaceService.download(url)
     .subscribe(data =>{
       (saveAs(data,'DataUpload.xlsx'))
-      this.spinner.show();
-      setTimeout(() => {
-        this.spinner.hide();
-        this.alertify.success('Download successfully')
-        this.modalReference.close()
-      }, 2000);
+      this.alertify.success('Download successfully')
+      this.modalReference.close()
+      this.spinner.hide();
+      // setTimeout(() => {
+      // }, 2000);
     })
   }
 

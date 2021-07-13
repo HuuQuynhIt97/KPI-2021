@@ -357,10 +357,10 @@ namespace API.Controllers
             }
             return Ok(false);
         }
-        [HttpGet("{userid}")]
-        public ActionResult ExcelExport1(int userid)
+        [HttpGet("{userid}/{lang}")]
+        public ActionResult ExcelExport1(int userid ,string lang)
         {
-            var model = _dataService.DataExport(userid);
+            var model = _dataService.DataExport(userid , lang);
             var currentYear = DateTime.Now.Year;
             var currentWeek = DateTime.Now.GetIso8601WeekOfYear();
             var currentMonth = DateTime.Now.Month;
@@ -545,12 +545,12 @@ namespace API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("{userid}")]
-        public ActionResult ExcelExport(int userid)
+        [HttpGet("{userid}/{lang}")]
+        public ActionResult ExcelExport(int userid , string lang)
         {
             //string token = Request.Headers["Authorization"].ToSafetyString();
             //var userid = Extensions.GetDecodeTokenByProperty(token, "nameid").ToInt();
-            var model = _dataService.DataExport(userid);
+            var model = _dataService.DataExport(userid,lang);
             var currentYear = DateTime.Now.Year;
             var currentWeek = DateTime.Now.GetIso8601WeekOfYear();
             var currentMonth = DateTime.Now.Month;

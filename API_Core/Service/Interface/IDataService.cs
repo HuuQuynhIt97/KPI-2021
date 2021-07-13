@@ -35,7 +35,7 @@ namespace Service.Interface
         Task<object> ListKPIUpload(int updaterid, int page, int pageSize);
         Task<object> UpLoadKPILevel(int userid, int page, int pageSize);
         string GetTargetData(string KPILevelCode, string CharacterPeriod, int period);
-        List<DataExportViewModel> DataExport(int userid);
+        List<DataExportViewModel> DataExport(int userid , string lang);
         string GetValueData(string KPILevelCode, string CharacterPeriod, int period);
         Task<bool> IsUpdater(int id);
         List<ActionDataExportViewModel> DataExportActionPlan(int kpilevelID);

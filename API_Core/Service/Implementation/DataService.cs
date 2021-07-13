@@ -4568,7 +4568,7 @@ namespace Service.Implementation
             return obj;
         }
 
-        public List<DataExportViewModel> DataExport(int userid)
+        public List<DataExportViewModel> DataExport(int userid, string lang)
         {
             var datas = _dbContext.Datas;
             var uploaders = _dbContext.Uploaders.Any(x => x.UserID == userid);
@@ -4587,7 +4587,7 @@ namespace Service.Implementation
                         {
                             Area = l.Name,
                             KPILevelCode = kpiLevel.KPILevelCode,
-                            KPIName = kpi.Name,
+                            KPIName = kpi.KPILangs.FirstOrDefault(x => x.LanguageID == lang).Name ?? kpi.Name,
                             StateW = kpiLevel.WeeklyChecked ?? false,
                             StateM = kpiLevel.MonthlyChecked ?? false,
                             StateH = kpiLevel.HalfYearChecked ?? false,
@@ -4621,7 +4621,7 @@ namespace Service.Implementation
                         {
                             Area = l.Name,
                             KPILevelCode = kpiLevel.KPILevelCode,
-                            KPIName = kpi.Name,
+                            KPIName = kpi.KPILangs.FirstOrDefault(x => x.LanguageID == lang).Name ?? kpi.Name,
                             StateW = kpiLevel.WeeklyChecked ?? false,
                             StateM = kpiLevel.MonthlyChecked ?? false,
                             StateH = kpiLevel.HalfYearChecked ?? false,
@@ -4655,7 +4655,7 @@ namespace Service.Implementation
                         {
                             Area = l.Name,
                             KPILevelCode = kpiLevel.KPILevelCode,
-                            KPIName = kpi.Name,
+                            KPIName = kpi.KPILangs.FirstOrDefault(x => x.LanguageID == lang).Name ?? kpi.Name,
                             StateW = kpiLevel.WeeklyChecked ?? false,
                             StateM = kpiLevel.MonthlyChecked ?? false,
                             StateH = kpiLevel.HalfYearChecked ?? false,
@@ -4688,7 +4688,7 @@ namespace Service.Implementation
                         {
                             Area = l.Name,
                             KPILevelCode = kpiLevel.KPILevelCode,
-                            KPIName = kpi.Name,
+                            KPIName = kpi.KPILangs.FirstOrDefault(x => x.LanguageID == lang).Name ?? kpi.Name,
                             StateW = kpiLevel.WeeklyChecked ?? false,
                             StateM = kpiLevel.MonthlyChecked ?? false,
                             StateH = kpiLevel.HalfYearChecked ?? false,

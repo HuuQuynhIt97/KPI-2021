@@ -6,8 +6,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>F:\KPI991</_PublishTargetUrl>
-    <History>True|2021-06-29T01:45:55.6839316Z;</History>
+    <_PublishTargetUrl>F:\Angular\IIS\KPI\V1</_PublishTargetUrl>
+    <History>True|2021-07-12T00:58:27.6711394Z;True|2021-06-29T08:45:55.6839316+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="API.deps.json">
