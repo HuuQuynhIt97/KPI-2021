@@ -148,210 +148,210 @@ namespace API.Controllers
 
                 await _hubContext.Clients.All.SendAsync("ReceiveMessage", "user", "message");
 
-                if (model.ListDatasSuccess.Count > 0 )
-                {
-                    string content2 = System.IO.File.ReadAllText("./wwwroot/Templates/UploadSuccessfully.html");
-                    content2 = content2.Replace("{{{content}}}", "<b style='color:green'>Upload Data Successfully!</b><br/> Dear Updater, <br/> You just uploaded the KPIs as below list: " + "<br/>" +
-                        "<b style='color:green'>上傳資料成功!</b><br/> 親愛的資料更新者, <br/> 您已更新以下的KPI資料: ");
-                    var html2 = string.Empty;
-                    foreach (var item in model.ListDatasSuccess.DistinctBy(x => x.KPIName))
-                    {
-                        var area = _levelService.GetNode(item.KPILevelCode);
-                        html2 += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                             </tr>"
-                        .Replace("{{area}}", area)
-                        .Replace("{{code}}", item.KPILevelCode)
-                        .Replace("{{kpiname}}", item.KPIName);
-                    }
-                    content2 = content2.Replace("{{{html-template}}}", html2).Replace("{{{href}}}", url);
-                    Thread thread = new Thread(async () =>
-                    {
-                        await _mailHelper.SendEmailRangeAsync(model.ListSendMail, "[KPI System] Upload Data successfully(上傳資料成功)", content2);
+                //if (model.ListDatasSuccess.Count > 0 )
+                //{
+                //    string content2 = System.IO.File.ReadAllText("./wwwroot/Templates/UploadSuccessfully.html");
+                //    content2 = content2.Replace("{{{content}}}", "<b style='color:green'>Upload Data Successfully!</b><br/> Dear Updater, <br/> You just uploaded the KPIs as below list: " + "<br/>" +
+                //        "<b style='color:green'>上傳資料成功!</b><br/> 親愛的資料更新者, <br/> 您已更新以下的KPI資料: ");
+                //    var html2 = string.Empty;
+                //    foreach (var item in model.ListDatasSuccess.DistinctBy(x => x.KPIName))
+                //    {
+                //        var area = _levelService.GetNode(item.KPILevelCode);
+                //        html2 += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //             </tr>"
+                //        .Replace("{{area}}", area)
+                //        .Replace("{{code}}", item.KPILevelCode)
+                //        .Replace("{{kpiname}}", item.KPIName);
+                //    }
+                //    content2 = content2.Replace("{{{html-template}}}", html2).Replace("{{{href}}}", url);
+                //    Thread thread = new Thread(async () =>
+                //    {
+                //        await _mailHelper.SendEmailRangeAsync(model.ListSendMail, "[KPI System] Upload Data successfully(上傳資料成功)", content2);
 
-                    });
-                    thread.Start();
-                }
+                //    });
+                //    thread.Start();
+                //}
                 
-                if (model.ListDatasOverTarget != null && model.ListDatasOverTarget.Count > 0)
-                {
-                    string content = System.IO.File.ReadAllText("./wwwroot/Templates/overTarget.html");
-                    content = content.Replace("{{{content}}}", @"<b style='color:red'>Over Target!</b><br/>Dear Owner, <br/>Please add your comment and action plan because you did not achieve KPI target as over list:" + "<br/>" +
-                        @"<b style='color:red'>未達到目標!</b><br/>親愛的資料執行者, <br/>請加上您的意見以及行動方案因為以下的KPI項目未達到目標:");
-                    var html = string.Empty;
+                //if (model.ListDatasOverTarget != null && model.ListDatasOverTarget.Count > 0)
+                //{
+                //    string content = System.IO.File.ReadAllText("./wwwroot/Templates/overTarget.html");
+                //    content = content.Replace("{{{content}}}", @"<b style='color:red'>Over Target!</b><br/>Dear Owner, <br/>Please add your comment and action plan because you did not achieve KPI target as over list:" + "<br/>" +
+                //        @"<b style='color:red'>未達到目標!</b><br/>親愛的資料執行者, <br/>請加上您的意見以及行動方案因為以下的KPI項目未達到目標:");
+                //    var html = string.Empty;
 
-                    foreach (var item in model.ListDatasOverTarget)
-                    {
-                        var area = _levelService.GetNode(item.KPILevelCode);
-                        if (item.Week > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{week}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{week}}", "Week " + item.Week.ToSafetyString());
-                        }
-                        if (item.Month > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>                            
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{month}}</td>
-                             </tr>"
-                           .Replace("{{area}}", area)
-                           .Replace("{{code}}", item.KPILevelCode)
-                           .Replace("{{kpiname}}", item.KPIName)
-                           .Replace("{{month}}", "Month " + item.Month.ToSafetyString());
-                        }
-                        if (item.Half > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{half}}", "HalfYear " + item.Half.ToSafetyString());
-                        }
-                        if (item.Quarter > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{quarter}}", "Quarter " + item.Quarter.ToSafetyString());
-                        }
+                //    foreach (var item in model.ListDatasOverTarget)
+                //    {
+                //        var area = _levelService.GetNode(item.KPILevelCode);
+                //        if (item.Week > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{week}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{week}}", "Week " + item.Week.ToSafetyString());
+                //        }
+                //        if (item.Month > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>                            
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{month}}</td>
+                //             </tr>"
+                //           .Replace("{{area}}", area)
+                //           .Replace("{{code}}", item.KPILevelCode)
+                //           .Replace("{{kpiname}}", item.KPIName)
+                //           .Replace("{{month}}", "Month " + item.Month.ToSafetyString());
+                //        }
+                //        if (item.Half > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{half}}", "HalfYear " + item.Half.ToSafetyString());
+                //        }
+                //        if (item.Quarter > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{quarter}}", "Quarter " + item.Quarter.ToSafetyString());
+                //        }
 
-                        if (item.Year > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{year}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{year}}", "Year " + item.Year.ToSafetyString());
-                        }
-                    }
+                //        if (item.Year > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{year}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{year}}", "Year " + item.Year.ToSafetyString());
+                //        }
+                //    }
 
-                    content = content.Replace("{{{html-template}}}", html).Replace("{{{href}}}", url);
-                    Thread thread = new Thread(async () =>
-                    {
-                        await _mailHelper.SendEmailRangeAsync(model.ListSendMail, "[KPI System] Over Target (未達到目標)", content);
-                    });
-                    thread.Start();
+                //    content = content.Replace("{{{html-template}}}", html).Replace("{{{href}}}", url);
+                //    Thread thread = new Thread(async () =>
+                //    {
+                //        await _mailHelper.SendEmailRangeAsync(model.ListSendMail, "[KPI System] Over Target (未達到目標)", content);
+                //    });
+                //    thread.Start();
 
-                    //signalR
-                    return Ok(model.Status);
-                }
+                //    //signalR
+                //    return Ok(model.Status);
+                //}
 
-                if (model.ListDatasBelowTarget.Count > 0)
-                {
-                    string content = System.IO.File.ReadAllText("./wwwroot/Templates/BelowTarget.html");
-                    content = content.Replace("{{{content}}}", @"<b style='color:red'>Below Target!</b><br/>Dear Owner, <br/>Please add your comment and action plan because you did not achieve KPI target as below list:" + "<br/>" +
-                        @"<b style='color:red'>未達到目標!</b><br/>親愛的資料執行者, <br/>請加上您的意見以及行動方案因為以下的KPI項目未達到目標:");
-                    var html = string.Empty;
+                //if (model.ListDatasBelowTarget.Count > 0)
+                //{
+                //    string content = System.IO.File.ReadAllText("./wwwroot/Templates/BelowTarget.html");
+                //    content = content.Replace("{{{content}}}", @"<b style='color:red'>Below Target!</b><br/>Dear Owner, <br/>Please add your comment and action plan because you did not achieve KPI target as below list:" + "<br/>" +
+                //        @"<b style='color:red'>未達到目標!</b><br/>親愛的資料執行者, <br/>請加上您的意見以及行動方案因為以下的KPI項目未達到目標:");
+                //    var html = string.Empty;
 
-                    foreach (var item in model.ListDatasBelowTarget)
-                    {
-                        var area = _levelService.GetNode(item.KPILevelCode);
-                        if (item.Week > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{week}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{week}}", "Week " + item.Week.ToSafetyString());
-                        }
-                        if (item.Month > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>                            
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{month}}</td>
-                             </tr>"
-                           .Replace("{{area}}", area)
-                           .Replace("{{code}}", item.KPILevelCode)
-                           .Replace("{{kpiname}}", item.KPIName)
-                           .Replace("{{month}}", "Month " + item.Month.ToSafetyString());
-                        }
-                        if (item.Half > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{half}}", "HalfYear " + item.Half.ToSafetyString());
-                        }
-                        if (item.Quarter > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{quarter}}", "Quarter " + item.Quarter.ToSafetyString());
-                        }
+                //    foreach (var item in model.ListDatasBelowTarget)
+                //    {
+                //        var area = _levelService.GetNode(item.KPILevelCode);
+                //        if (item.Week > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{week}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{week}}", "Week " + item.Week.ToSafetyString());
+                //        }
+                //        if (item.Month > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>                            
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{month}}</td>
+                //             </tr>"
+                //           .Replace("{{area}}", area)
+                //           .Replace("{{code}}", item.KPILevelCode)
+                //           .Replace("{{kpiname}}", item.KPIName)
+                //           .Replace("{{month}}", "Month " + item.Month.ToSafetyString());
+                //        }
+                //        if (item.Half > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{half}}", "HalfYear " + item.Half.ToSafetyString());
+                //        }
+                //        if (item.Quarter > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{quarter}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{quarter}}", "Quarter " + item.Quarter.ToSafetyString());
+                //        }
 
-                        if (item.Year > 0)
-                        {
-                            html += @"<tr>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
-                            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{year}}</td>
-                             </tr>"
-                            .Replace("{{area}}", area)
-                            .Replace("{{code}}", item.KPILevelCode)
-                            .Replace("{{kpiname}}", item.KPIName)
-                            .Replace("{{year}}", "Year " + item.Year.ToSafetyString());
-                        }
-                    }
+                //        if (item.Year > 0)
+                //        {
+                //            html += @"<tr>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{area}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{code}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{kpiname}}</td>
+                //            <td valign='top' style='padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;'>{{year}}</td>
+                //             </tr>"
+                //            .Replace("{{area}}", area)
+                //            .Replace("{{code}}", item.KPILevelCode)
+                //            .Replace("{{kpiname}}", item.KPIName)
+                //            .Replace("{{year}}", "Year " + item.Year.ToSafetyString());
+                //        }
+                //    }
 
-                    content = content.Replace("{{{html-template}}}", html).Replace("{{{href}}}", url);
-                    Thread thread = new Thread(async () =>
-                    {
-                        await _mailHelper.SendEmailRangeAsync(model.ListSendMail, "[KPI System] Below Target (未達到目標)", content);
-                    });
-                    thread.Start();
+                //    content = content.Replace("{{{html-template}}}", html).Replace("{{{href}}}", url);
+                //    Thread thread = new Thread(async () =>
+                //    {
+                //        await _mailHelper.SendEmailRangeAsync(model.ListSendMail, "[KPI System] Below Target (未達到目標)", content);
+                //    });
+                //    thread.Start();
                     
-                    //signalR
-                    return Ok(model.Status);
-                }
+                //    //signalR
+                //    return Ok(model.Status);
+                //}
                
                 return Ok(model.Status);
             }

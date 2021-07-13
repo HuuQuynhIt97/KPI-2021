@@ -246,26 +246,26 @@ namespace API.Controllers
             await _hubContext.Clients.All.SendAsync("ReceiveMessage", data, "message");
 
 
-            if (data.ListEmails.Count > 0 && await _settingService.IsSendMail("ADDCOMMENT"))
-            {
-                var model = data.ListEmails.DistinctBy(x => x);
-                //string from = ConfigurationManager.AppSettings["FromEmailAddress"].ToSafetyString();
-                string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
-                                   <p>The account <b>" + model.First()[0] + "</b> mentioned you in KPI System Apps. </p>" +
-                                  "<p>Content: " + model.First()[4] + "</p>" +
-                                  "<p>Link: <a href='" + data.QueryString + "'>Click Here</a></p>" +
-                                  "<br/>" +
+            //if (data.ListEmails.Count > 0 && await _settingService.IsSendMail("ADDCOMMENT"))
+            //{
+            //    var model = data.ListEmails.DistinctBy(x => x);
+            //    //string from = ConfigurationManager.AppSettings["FromEmailAddress"].ToSafetyString();
+            //    string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
+            //                       <p>The account <b>" + model.First()[0] + "</b> mentioned you in KPI System Apps. </p>" +
+            //                      "<p>Content: " + model.First()[4] + "</p>" +
+            //                      "<p>Link: <a href='" + data.QueryString + "'>Click Here</a></p>" +
+            //                      "<br/>" +
 
-                                  @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
-                                   <p> 帳號 <b> " + model.First()[0] + " </b> 在 KPI 系統提及您. </p>"+
-                                   "<p>內容: " + model.First()[4] + "</p>" +
-                                  "<p>連結: <a href='" + data.QueryString + "'>點選這裡</a></p>";
-                Thread thread = new Thread(async () =>
-                {
-                    await _mailHelper.SendEmailRange(model.Select(x => x[1]).ToList(), "[KPI System-02] Comment", content);
-                });
-                thread.Start();
-            }
+            //                      @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
+            //                       <p> 帳號 <b> " + model.First()[0] + " </b> 在 KPI 系統提及您. </p>"+
+            //                       "<p>內容: " + model.First()[4] + "</p>" +
+            //                      "<p>連結: <a href='" + data.QueryString + "'>點選這裡</a></p>";
+            //    Thread thread = new Thread(async () =>
+            //    {
+            //        await _mailHelper.SendEmailRange(model.Select(x => x[1]).ToList(), "[KPI System-02] Comment", content);
+            //    });
+            //    thread.Start();
+            //}
             return Ok(new { status = data.Status, isSendmail = true });
         
         }
@@ -409,47 +409,47 @@ namespace API.Controllers
             await _hubContext.Clients.All.SendAsync("ReceiveMessage", "user", "message");
 
 
-            if (model.Item1.Count > 0 && await _settingService.IsSendMail("APPROVAL"))
-            {
-                if(model.Item2 == true)
-                {
-                    Thread thread = new Thread(async () =>
-                    {
-                        string URL = _configuaration.GetSection("AppSettings:URL").ToSafetyString();
-                        var data = model.Item1.DistinctBy(x => x);
-                        string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
-                                        <p>The account <b>" + data.First()[0].ToTitleCase() + "</b> approved the action plan <b>'" + data.First()[3] + "'</b> </p>" +
-                                        "<p>Link: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>Click Here</a></p>" +
-                                        "<br/>" +
+            //if (model.Item1.Count > 0 && await _settingService.IsSendMail("APPROVAL"))
+            //{
+            //    if(model.Item2 == true)
+            //    {
+            //        Thread thread = new Thread(async () =>
+            //        {
+            //            string URL = _configuaration.GetSection("AppSettings:URL").ToSafetyString();
+            //            var data = model.Item1.DistinctBy(x => x);
+            //            string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
+            //                            <p>The account <b>" + data.First()[0].ToTitleCase() + "</b> approved the action plan <b>'" + data.First()[3] + "'</b> </p>" +
+            //                            "<p>Link: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>Click Here</a></p>" +
+            //                            "<br/>" +
 
-                                        @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
-                                        <p>帳號<b>" + data.First()[0].ToTitleCase() + "</b> 已經核准了行動方案 <b>'" + data.First()[3] + "'</b> </p>" +
-                                        "<p>連結: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>點選這裡</a></p>"
-                                        ;
-                        await _mailHelper.SendEmailRange(data.Select(x => x[1]).ToList(), "[KPI System-05] Approved (已核准)", content);
-                    });
-                    thread.Start();
-                }
-                else
-                {
-                    Thread thread = new Thread(async () =>
-                    {
-                        string URL = _configuaration.GetSection("AppSettings:URL").ToSafetyString();
-                        var data = model.Item1.DistinctBy(x => x);
-                        string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
-                                        <p>The account <b>" + data.First()[0].ToTitleCase() + "</b> not approve the action plan <b>'" + data.First()[3] + "'</b> </p>" +
-                                        "<p>Link: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>Click Here</a></p>" +
-                                        "<br/>" +
+            //                            @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
+            //                            <p>帳號<b>" + data.First()[0].ToTitleCase() + "</b> 已經核准了行動方案 <b>'" + data.First()[3] + "'</b> </p>" +
+            //                            "<p>連結: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>點選這裡</a></p>"
+            //                            ;
+            //            await _mailHelper.SendEmailRange(data.Select(x => x[1]).ToList(), "[KPI System-05] Approved (已核准)", content);
+            //        });
+            //        thread.Start();
+            //    }
+            //    else
+            //    {
+            //        Thread thread = new Thread(async () =>
+            //        {
+            //            string URL = _configuaration.GetSection("AppSettings:URL").ToSafetyString();
+            //            var data = model.Item1.DistinctBy(x => x);
+            //            string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
+            //                            <p>The account <b>" + data.First()[0].ToTitleCase() + "</b> not approve the action plan <b>'" + data.First()[3] + "'</b> </p>" +
+            //                            "<p>Link: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>Click Here</a></p>" +
+            //                            "<br/>" +
 
-                                        @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
-                                        <p>帳號<b>" + data.First()[0].ToTitleCase() + "</b> 取消核准行動方案 <b>'" + data.First()[3] + "'</b> </p>" +
-                                        "<p>連結: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>點選這裡</a></p>"
-                                        ;
-                        await _mailHelper.SendEmailRange(data.Select(x => x[1]).ToList(), "[KPI System-05] Not Approved", content);
-                    });
-                    thread.Start();
-                }
-            }
+            //                            @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
+            //                            <p>帳號<b>" + data.First()[0].ToTitleCase() + "</b> 取消核准行動方案 <b>'" + data.First()[3] + "'</b> </p>" +
+            //                            "<p>連結: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>點選這裡</a></p>"
+            //                            ;
+            //            await _mailHelper.SendEmailRange(data.Select(x => x[1]).ToList(), "[KPI System-05] Not Approved", content);
+            //        });
+            //        thread.Start();
+            //    }
+            //}
             return Ok(new { status = true, isSendmail = true });
         }
         [HttpPost]
@@ -463,26 +463,26 @@ namespace API.Controllers
             await _hubContext.Clients.All.SendAsync("ReceiveMessage", "user", "message");
 
 
-            if (model.Item1.Count > 0 && await _settingService.IsSendMail("DONE"))
-            {
-                Thread thread = new Thread(async () =>
-                {
-                    string URL = _configuaration.GetSection("AppSettings:URL").ToSafetyString();
+            //if (model.Item1.Count > 0 && await _settingService.IsSendMail("DONE"))
+            //{
+            //    Thread thread = new Thread(async () =>
+            //    {
+            //        string URL = _configuaration.GetSection("AppSettings:URL").ToSafetyString();
 
-                    var data = model.Item1.DistinctBy(x => x);
-                    string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
-                                    <p>The account <b>" + data.First()[0].ToTitleCase() + "</b> has finished the action plan name <b>'" + data.First()[3] + "'</b></p>" +
-                                  "<p>Link: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>Click Here</a></p>" + 
-                                  "<br/>" +
+            //        var data = model.Item1.DistinctBy(x => x);
+            //        string content = @"<p><b>*PLEASE DO NOT REPLY* this email was automatically sent from the KPI system.</b></p> 
+            //                        <p>The account <b>" + data.First()[0].ToTitleCase() + "</b> has finished the action plan name <b>'" + data.First()[3] + "'</b></p>" +
+            //                      "<p>Link: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>Click Here</a></p>" + 
+            //                      "<br/>" +
 
-                                  @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
-                                    <p>帳號 <b>" + data.First()[0].ToTitleCase() + "</b> 已經完成行動方案 <b>'" + data.First()[3] + "'</b></p>" +
-                                  "<p>連結: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>點選這裡</a></p>"
-                                  ;
-                    await _mailHelper.SendEmailRange(data.Select(x => x[1]).ToList(), "[KPI System-04] Action Plan (Finished Task) - 行動方案(任務完成)", content);
-                });
-                thread.Start();
-            }
+            //                      @"<p><b>*請勿回信*這封信是KPI系統自動寄出.</b></p> 
+            //                        <p>帳號 <b>" + data.First()[0].ToTitleCase() + "</b> 已經完成行動方案 <b>'" + data.First()[3] + "'</b></p>" +
+            //                      "<p>連結: <a href='" + _configuration["AppSettings:URL"] + model.Item3 + "'>點選這裡</a></p>"
+            //                      ;
+            //        await _mailHelper.SendEmailRange(data.Select(x => x[1]).ToList(), "[KPI System-04] Action Plan (Finished Task) - 行動方案(任務完成)", content);
+            //    });
+            //    thread.Start();
+            //}
             return Ok(new { status = model.Item2, isSendmail = true });
         }
         [HttpPost]
