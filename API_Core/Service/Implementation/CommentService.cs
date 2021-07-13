@@ -26,7 +26,10 @@ namespace Service.Implementation
         private readonly ISettingService _settingService;
         private readonly IHubContext<HenryHub> _hubContext;
 
-        public CommentService(DataContext dbContext, INotificationService notificationService)
+        public CommentService(
+            DataContext dbContext, 
+            INotificationService notificationService
+            )
         {
             _dbContext = dbContext;
             _notificationService = notificationService;

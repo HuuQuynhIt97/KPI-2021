@@ -171,16 +171,16 @@ export class WorkplaceComponent implements OnInit {
   }
 
   uploadFile(){
+    this.spinner.show();
     const formData = new FormData()
     formData.append('UploadedFile', this.file)
     this.http.post(this.baseUrl + 'Workplace/Import',formData)
     .subscribe((res: any)=>{
       if(res){
-        this.spinner.show();
+        this.spinner.hide();
+        this.alertify.success('Upload successfully')
+        this.modalReference.close()
         setTimeout(() => {
-          this.spinner.hide();
-          this.alertify.success('Upload successfully')
-          this.modalReference.close()
         }, 2000);
       }
     })

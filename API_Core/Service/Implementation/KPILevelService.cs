@@ -593,7 +593,7 @@ namespace Service.Implementation
         {
             try
             {
-                var item_data = _dbContext.ScorePerfomances.Where(x => x.KPILevel_Code == kpilevelcode).ToList();
+                var item_data = await _dbContext.ScorePerfomances.Where(x => x.KPILevel_Code == kpilevelcode).ToListAsync();
                 return new
                 {
                     data = item_data
@@ -610,7 +610,7 @@ namespace Service.Implementation
         public async Task<bool> UpdateScoreData(KPILevelForUpdate entity)
         {
             //throw new NotImplementedException();
-            var item = _dbContext.Datas.Find(entity.ID);
+            var item = await _dbContext.Datas.FindAsync(entity.ID);
             if (item != null)
             {
                 item.Score = entity.Score;
@@ -618,7 +618,7 @@ namespace Service.Implementation
 
             try
             {
-                _dbContext.SaveChanges();
+               await _dbContext.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
